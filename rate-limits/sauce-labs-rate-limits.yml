@@ -1,0 +1,38 @@
+---
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Sauce Labs
+providerId: sauce-labs
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - Rate Limiting
+description: >-
+  Sauce Labs enforces rate limits on all REST API endpoints at two levels:
+  authenticated requests are limited to 10 requests per second (3,500 per hour)
+  per account, while unauthenticated requests are limited to 2 requests per
+  minute per IP address. When limits are exceeded the API returns HTTP 429.
+sources:
+  - https://docs.saucelabs.com/dev/api/
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Authenticated API Requests (per second)
+    scope: key
+    metric: requests_per_second
+    limit: 10
+    timeFrame: second
+  - name: Authenticated API Requests (per hour)
+    scope: key
+    metric: requests_per_hour
+    limit: 3500
+    timeFrame: hour
+  - name: Unauthenticated API Requests
+    scope: ip
+    metric: requests_per_minute
+    limit: 2
+    timeFrame: minute

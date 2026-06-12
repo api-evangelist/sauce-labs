@@ -1,0 +1,64 @@
+---
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Sauce Labs
+providerId: sauce-labs
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+description: >-
+  FOCUS-aligned FinOps profile for Sauce Labs cloud-based testing platform.
+  Billing is subscription-based with monthly or annual terms, metered by
+  concurrent sessions and add-on product usage. Cost optimization centers
+  on right-sizing parallel test concurrency and monitoring real device minutes.
+sources:
+  - https://saucelabs.com/pricing
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Sauce Labs
+serviceCategory: Developer Tools
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Sauce Labs
+  ServiceCategory: Developer Tools
+  ProviderName: Sauce Labs
+  PublisherName: Sauce Labs
+  BillingCurrency: USD
+meters:
+  - name: Concurrent Test Sessions
+    unit: sessions
+    aggregation: max
+  - name: Visual Testing Snapshots
+    unit: snapshots
+    aggregation: sum
+  - name: Beta Tester Seats
+    unit: testers
+    aggregation: max
+  - name: App Distribution Apps
+    unit: apps
+    aggregation: max
+principles:
+  - name: Visibility
+    description: >-
+      Track Sauce Labs subscription tier, concurrent session usage, and
+      add-on consumption monthly via the Insights and Usage Analytics APIs.
+  - name: Optimization
+    description: >-
+      Right-size parallel test concurrency to actual CI/CD pipeline needs;
+      monitor idle real device time and unused app distribution slots to
+      avoid over-provisioning.
+  - name: Accountability
+    description: >-
+      Use Sauce Labs team management to allocate test quotas per team and
+      charge back testing costs by organizational unit using usage analytics.

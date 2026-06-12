@@ -1,0 +1,237 @@
+---
+aid: sauce-labs
+name: Sauce Labs
+description: >-
+  Sauce Labs is a cloud-based cross-browser and mobile app testing platform
+  trusted by over 100,000 customers worldwide. It provides a comprehensive
+  set of REST APIs for managing test jobs, devices, builds, insights, and
+  results across virtual and real device clouds. The platform supports
+  automated testing with frameworks like Appium, Espresso, and XCUITest,
+  and integrates with popular CI/CD pipelines including GitHub Actions.
+  Sauce Labs also offers API testing, contract testing, error reporting,
+  and an MCP server for AI agent integrations.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Testing
+  - Cross-Browser Testing
+  - Mobile Testing
+  - Real Devices
+  - Automation
+  - CI/CD
+  - Quality Assurance
+url: https://raw.githubusercontent.com/api-evangelist/sauce-labs/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+apis:
+  - aid: sauce-labs:jobs
+    name: Sauce Labs Jobs API
+    description: >-
+      Manage and retrieve test jobs running on Sauce Labs virtual and real
+      device infrastructure. Supports listing jobs, fetching job assets such
+      as logs, videos, and screenshots, updating job attributes, and stopping
+      or deleting jobs.
+    humanURL: https://docs.saucelabs.com/dev/api/jobs/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Jobs
+      - Testing
+      - Automation
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/jobs/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/sauce.json
+
+  - aid: sauce-labs:real-devices
+    name: Sauce Labs Real Device API
+    description: >-
+      Access and control real Android and iOS devices hosted in Sauce Labs
+      data centers. Endpoints cover device inventory, availability status,
+      job management on real devices, and private device management including
+      team assignment and device settings.
+    humanURL: https://docs.saucelabs.com/dev/api/rdc/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Real Devices
+      - Mobile Testing
+      - iOS
+      - Android
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/rdc/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/rdc.json
+
+  - aid: sauce-labs:real-device-access
+    name: Sauce Labs Real Device Access API
+    description: >-
+      The Real Device Access API provides programmatic access to Sauce Labs
+      real device sessions, enabling creation, management, and termination of
+      remote device sessions for live and automated testing workflows.
+    humanURL: https://docs.saucelabs.com/dev/api/rdc/
+    baseURL: https://api.us-west-1.saucelabs.com/rdc/v2
+    tags:
+      - Real Devices
+      - Device Sessions
+      - Mobile Testing
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/rdc/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/real-device-access-api-spec.yaml
+
+  - aid: sauce-labs:accounts
+    name: Sauce Labs Accounts API
+    description: >-
+      Manage Sauce Labs user accounts, teams, and organizational settings
+      programmatically. Supports user management, team configuration, and
+      access control operations across the Sauce Labs platform.
+    humanURL: https://docs.saucelabs.com/dev/api/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Accounts
+      - Teams
+      - User Management
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/accounts.yml
+
+  - aid: sauce-labs:builds
+    name: Sauce Labs Builds API
+    description: >-
+      Track and manage test build groupings on Sauce Labs. The Builds API
+      allows retrieval of build metadata, job associations, and build-level
+      analytics to support CI/CD pipeline reporting.
+    humanURL: https://docs.saucelabs.com/dev/api/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Builds
+      - CI/CD
+      - Testing
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/buildsv2.json
+
+  - aid: sauce-labs:platform
+    name: Sauce Labs Platform API
+    description: >-
+      Retrieve information about Sauce Labs supported automation environments,
+      browser/OS combinations, and overall platform status. Useful for
+      dynamically querying available test configurations.
+    humanURL: https://docs.saucelabs.com/dev/api/platform/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Platform
+      - Browsers
+      - Environments
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/platform/
+
+  - aid: sauce-labs:sauce-connect
+    name: Sauce Labs Sauce Connect API
+    description: >-
+      Manage Sauce Connect Proxy tunnels programmatically. The Sauce Connect
+      API provides endpoints for listing, creating, and stopping secure
+      tunnels that allow testing of applications on private or internal
+      networks.
+    humanURL: https://docs.saucelabs.com/dev/api/connect/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Tunnels
+      - Sauce Connect
+      - Security
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/connect/
+
+  - aid: sauce-labs:storage
+    name: Sauce Labs Storage API
+    description: >-
+      Upload and manage application files (APK, IPA, ZIP) and other test
+      artifacts in the Sauce Labs file storage service. Supports uploading
+      apps, listing stored files, and deleting files used in test runs.
+    humanURL: https://docs.saucelabs.com/dev/api/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Storage
+      - File Upload
+      - Mobile Apps
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/
+
+  - aid: sauce-labs:test-authoring
+    name: Sauce Labs Test Authoring API
+    description: >-
+      Programmatically author and manage test suites using the Sauce Labs
+      test authoring capabilities. Supports integration with AI-powered test
+      generation features available on the Sauce Labs platform.
+    humanURL: https://docs.saucelabs.com/dev/api/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Test Authoring
+      - Automation
+      - AI
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/test-authoring-api.json
+
+  - aid: sauce-labs:performance
+    name: Sauce Labs Performance API
+    description: >-
+      Access web performance testing data and metrics collected during Sauce
+      Labs test runs. The Performance API exposes Lighthouse-based metrics,
+      enabling teams to track and enforce performance budgets.
+    humanURL: https://docs.saucelabs.com/dev/api/
+    baseURL: https://api.us-west-1.saucelabs.com
+    tags:
+      - Performance
+      - Web Testing
+      - Lighthouse
+    properties:
+      - type: Documentation
+        url: https://docs.saucelabs.com/dev/api/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/performance.json
+
+common:
+  - type: Website
+    url: https://saucelabs.com
+  - type: Documentation
+    url: https://docs.saucelabs.com/dev/api/
+  - type: GitHubOrganization
+    url: https://github.com/saucelabs
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sauce-labs
+  - type: X
+    url: https://twitter.com/saucelabs
+  - type: Blog
+    url: https://saucelabs.com/resources/blog
+  - type: Pricing
+    url: https://saucelabs.com/pricing
+  - type: StatusPage
+    url: https://status.saucelabs.com/
+  - type: Changelog
+    url: https://changelog.saucelabs.com/en
+  - type: MCP
+    url: https://github.com/saucelabs/sauce-api-mcp
+  - type: SDK
+    url: https://github.com/saucelabs/node-saucelabs
+  - type: Plans
+    url: plans/sauce-labs-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sauce-labs-rate-limits.yml
+  - type: FinOps
+    url: finops/sauce-labs-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

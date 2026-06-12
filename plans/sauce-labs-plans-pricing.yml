@@ -1,0 +1,240 @@
+---
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Sauce Labs
+providerId: sauce-labs
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - Testing
+  - Cross-Browser Testing
+  - Mobile Testing
+  - Real Devices
+  - Automation
+description: >-
+  Sauce Labs offers tiered plans for Live Testing, Virtual Device Cloud, and
+  Real Device Cloud. Pricing is available on annual or monthly billing, with
+  enterprise plans available for large-scale and custom deployments. Add-on
+  products include Sauce Mobile App Distribution and Sauce Error Reporting.
+sources:
+  - https://saucelabs.com/pricing
+plans:
+  - id: sauce-labs-live-testing
+    name: Live Testing
+    type: paid
+    description: >-
+      Access to live interactive browser and mobile testing on thousands of
+      desktop browsers and mobile emulators/simulators. Includes 1 parallel
+      test, unlimited users, unlimited testing minutes, secure local tunneling,
+      debugging tools, videos, screenshots, and REST API access.
+    entries:
+      - label: Parallel Tests
+        name: parallel_tests
+        type: quota
+        metric: concurrent sessions
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$39'
+        userMultiplied: false
+      - label: Desktop Browsers Access
+        name: desktop_browsers
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Mobile Emulators/Simulators
+        name: emulators_simulators
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: REST API Access
+        name: rest_api_access
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+
+  - id: sauce-labs-virtual-device-cloud
+    name: Virtual Device Cloud
+    type: paid
+    description: >-
+      All Live Testing features plus unlimited automated testing minutes, visual
+      testing with 500 monthly snapshots, and scalable to 1–24 concurrent
+      sessions. Supports automated frameworks with virtual browsers and
+      emulators/simulators.
+    entries:
+      - label: Parallel Tests
+        name: parallel_tests
+        type: quota
+        metric: concurrent sessions
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$149'
+        userMultiplied: false
+      - label: Automated Testing Minutes
+        name: automated_minutes
+        type: quota
+        metric: minutes
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Visual Testing Snapshots
+        name: visual_snapshots
+        type: quota
+        metric: snapshots
+        limit: 500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Max Concurrent Sessions
+        name: max_concurrent_sessions
+        type: quota
+        metric: concurrent sessions
+        limit: 24
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+
+  - id: sauce-labs-real-device-cloud
+    name: Real Device Cloud
+    type: paid
+    description: >-
+      All Virtual Device Cloud features plus access to thousands of real Android
+      and iOS devices hosted in Sauce Labs data centers. Supports automation
+      with Appium, Espresso, and XCUITest, plus issue reporting with device
+      logs and video capture.
+    entries:
+      - label: Parallel Tests
+        name: parallel_tests
+        type: quota
+        metric: concurrent sessions
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$199'
+        userMultiplied: false
+      - label: Real Device Access
+        name: real_device_access
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Appium/Espresso/XCUITest Support
+        name: framework_support
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+
+  - id: sauce-labs-mobile-app-distribution
+    name: Sauce Mobile App Distribution
+    type: paid
+    description: >-
+      Mobile app distribution and beta testing add-on. Includes 20 unique apps,
+      100 beta testers, 60-day data retention, enterprise iOS certificates, and
+      Fastlane integration.
+    entries:
+      - label: Unique Apps
+        name: unique_apps
+        type: quota
+        metric: apps
+        limit: 20
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$249'
+        userMultiplied: false
+      - label: Beta Testers
+        name: beta_testers
+        type: quota
+        metric: testers
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Data Retention
+        name: data_retention
+        type: quota
+        metric: days
+        limit: 60
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+
+  - id: sauce-labs-enterprise
+    name: Enterprise
+    type: enterprise
+    description: >-
+      Custom enterprise plans with SSO, unified analytics, Sauce AI Agents,
+      test authoring, private device clouds, and professional services.
+      Pricing available on request via Sauce Labs sales team.
+    entries:
+      - label: Custom Concurrent Sessions
+        name: concurrent_sessions
+        type: quota
+        metric: concurrent sessions
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'Custom'
+        userMultiplied: false
+      - label: Private Device Cloud
+        name: private_device_cloud
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'Custom'
+        userMultiplied: false
+      - label: SSO
+        name: sso
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'Custom'
+        userMultiplied: false
