@@ -43,6 +43,8 @@ apis:
         url: https://docs.saucelabs.com/dev/api/jobs/
       - type: OpenAPI
         url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/sauce.json
+      - type: OpenAPI
+        url: openapi/sauce-labs-jobs-openapi.yml
 
   - aid: sauce-labs:real-devices
     name: Sauce Labs Real Device API
@@ -81,6 +83,8 @@ apis:
         url: https://docs.saucelabs.com/dev/api/rdc/
       - type: OpenAPI
         url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/real-device-access-api-spec.yaml
+      - type: OpenAPI
+        url: openapi/sauce-labs-real-device-access-openapi.yml
 
   - aid: sauce-labs:accounts
     name: Sauce Labs Accounts API
@@ -226,6 +230,10 @@ common:
     url: https://github.com/saucelabs/sauce-api-mcp
   - type: SDK
     url: https://github.com/saucelabs/node-saucelabs
+  - type: Vocabulary
+    url: vocabulary/sauce-labs-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/sauce-labs-context.jsonld
   - type: Plans
     url: plans/sauce-labs-plans-pricing.yml
   - type: RateLimits

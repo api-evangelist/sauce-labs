@@ -1,0 +1,543 @@
+openapi: 3.0.3
+info:
+  title: Sauce Labs Jobs API
+  description: >-
+    Manage and retrieve test jobs running on Sauce Labs virtual and real device
+    infrastructure. Supports listing jobs, fetching job assets such as logs,
+    videos, and screenshots, updating job attributes, and stopping or deleting
+    jobs.
+  version: '1.1'
+  contact:
+    name: Sauce Labs Support
+    url: https://support.saucelabs.com
+  termsOfService: https://saucelabs.com/terms-of-service
+  license:
+    name: Proprietary
+    url: https://saucelabs.com/terms-of-service
+externalDocs:
+  description: Sauce Labs Jobs API Documentation
+  url: https://docs.saucelabs.com/dev/api/jobs/
+servers:
+  - url: https://api.us-west-1.saucelabs.com
+    description: US West (primary)
+  - url: https://api.eu-central-1.saucelabs.com
+    description: EU Central
+security:
+  - basicAuth: []
+paths:
+  /v1/{username}/jobs:
+    get:
+      operationId: listJobs
+      summary: List Jobs for a User
+      description: Returns a list of test jobs for the specified user.
+      tags:
+        - Jobs
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Sauce Labs username.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 500
+          description: Maximum number of jobs to return.
+        - name: skip
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Number of jobs to skip (for pagination).
+        - name: from
+          in: query
+          schema:
+            type: integer
+          description: Unix timestamp; return jobs created after this time.
+        - name: to
+          in: query
+          schema:
+            type: integer
+          description: Unix timestamp; return jobs created before this time.
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [new, queued, in progress, passed, failed, error, complete]
+          description: Filter by job status.
+      responses:
+        '200':
+          description: A list of job summaries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/{username}/jobs/{id}:
+    get:
+      operationId: getJob
+      summary: Get a Job
+      description: Returns full details for a specific job by ID.
+      tags:
+        - Jobs
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The job ID.
+      responses:
+        '200':
+          description: Job details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateJob
+      summary: Update a Job
+      description: Update attributes of an existing job such as name, tags, or pass/fail status.
+      tags:
+        - Jobs
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobUpdate'
+      responses:
+        '200':
+          description: Updated job details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteJob
+      summary: Delete a Job
+      description: Permanently deletes a job and all associated assets.
+      tags:
+        - Jobs
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Job successfully deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/{username}/jobs/{id}/stop:
+    put:
+      operationId: stopJob
+      summary: Stop a Running Job
+      description: Terminates a running or queued job immediately.
+      tags:
+        - Jobs
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Job stopped successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/jobs/{id}/{assetName}:
+    get:
+      operationId: getJobAsset
+      summary: Get a Job Asset
+      description: >-
+        Download a job asset such as log files, screenshots, or video recordings.
+        Common asset names include `selenium-server.log`, `video.mp4`, and
+        `screenshots.zip`.
+      tags:
+        - Job Assets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: assetName
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [selenium-server.log, video.mp4, screenshots.zip, sauce-log, automator.log]
+      responses:
+        '200':
+          description: Asset binary content.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/info/status:
+    get:
+      operationId: getPlatformStatus
+      summary: Get Platform Status
+      description: Returns the current operational status of the Sauce Labs platform.
+      tags:
+        - Platform
+      security: []
+      responses:
+        '200':
+          description: Platform status information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SauceStatus'
+  /v1/info/platforms/{platform}:
+    get:
+      operationId: getPlatformInfo
+      summary: Get Supported Platforms
+      description: Returns a list of supported OS/browser combinations for the given platform.
+      tags:
+        - Platform
+      parameters:
+        - name: platform
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [webdriver, appium, all]
+      security: []
+      responses:
+        '200':
+          description: List of supported platforms.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Platform'
+  /v1.2/users/{username}/concurrency:
+    get:
+      operationId: getUserConcurrency
+      summary: Get User Concurrency
+      description: Returns the current and maximum concurrency limits for the user.
+      tags:
+        - Users
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Concurrency information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concurrency'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        Use your Sauce Labs username and access key as the HTTP Basic
+        Authentication credentials.
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Job:
+      type: object
+      description: Full details of a Sauce Labs test job.
+      properties:
+        id:
+          type: string
+          description: Unique job identifier.
+        name:
+          type: string
+          description: Human-readable job name.
+        status:
+          type: string
+          enum: [new, queued, in progress, passed, failed, error, complete]
+          description: Current status of the job.
+        passed:
+          type: boolean
+          nullable: true
+          description: Whether the job was marked as passed.
+        owner:
+          type: string
+          description: Username of the job owner.
+        build:
+          type: string
+          nullable: true
+          description: Build identifier associated with this job.
+        browser:
+          type: string
+          description: Browser used in the job.
+        browser_version:
+          type: string
+          description: Browser version used.
+        browser_short_version:
+          type: string
+          description: Short browser version string.
+        os:
+          type: string
+          description: Operating system used.
+        automation_backend:
+          type: string
+          description: Automation framework (e.g., webdriver, appium).
+        creation_time:
+          type: integer
+          description: Unix timestamp when the job was created.
+        start_time:
+          type: integer
+          nullable: true
+          description: Unix timestamp when the job started running.
+        end_time:
+          type: integer
+          nullable: true
+          description: Unix timestamp when the job ended.
+        modification_time:
+          type: integer
+          description: Unix timestamp of last modification.
+        tags:
+          type: array
+          items:
+            type: string
+          description: User-defined tags for categorizing jobs.
+        public:
+          type: string
+          description: Visibility setting (public, private, team, share).
+        video_url:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to the recorded video of the session.
+        log_url:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to the Selenium log.
+        commands_not_successful:
+          type: integer
+          description: Count of commands that did not succeed.
+        consolidated_status:
+          type: string
+          description: Consolidated pass/fail status string.
+        assigned_tunnel_id:
+          type: string
+          nullable: true
+          description: Sauce Connect tunnel ID used by this job.
+        proxied:
+          type: boolean
+          description: Whether the job was proxied through Sauce Connect.
+        record_screenshots:
+          type: boolean
+          description: Whether screenshots were recorded.
+        record_video:
+          type: boolean
+          description: Whether video was recorded.
+        selenium_version:
+          type: string
+          nullable: true
+          description: Selenium version used.
+    JobSummary:
+      type: object
+      description: Abbreviated job information for list responses.
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum: [new, queued, in progress, passed, failed, error, complete]
+        passed:
+          type: boolean
+          nullable: true
+        name:
+          type: string
+        build:
+          type: string
+          nullable: true
+        creation_time:
+          type: integer
+        start_time:
+          type: integer
+          nullable: true
+        end_time:
+          type: integer
+          nullable: true
+    JobUpdate:
+      type: object
+      description: Fields that can be updated on an existing job.
+      properties:
+        name:
+          type: string
+          description: New display name for the job.
+        passed:
+          type: boolean
+          description: Set pass/fail status for the job.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Replace the list of tags.
+        build:
+          type: string
+          description: Set or update the build name.
+        public:
+          type: string
+          enum: [public, private, team, share]
+          description: Update the visibility of the job.
+        custom-data:
+          type: object
+          additionalProperties: true
+          description: Arbitrary key-value metadata.
+    Concurrency:
+      type: object
+      description: Concurrency usage and limits for a user.
+      properties:
+        timestamp:
+          type: number
+        concurrency:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                allowed:
+                  type: object
+                  properties:
+                    overall:
+                      type: integer
+                    mac:
+                      type: integer
+                    manual:
+                      type: integer
+                current:
+                  type: object
+                  properties:
+                    overall:
+                      type: integer
+                    mac:
+                      type: integer
+                    manual:
+                      type: integer
+    SauceStatus:
+      type: object
+      description: Platform operational status.
+      properties:
+        wait_time:
+          type: number
+          description: Current average wait time in seconds.
+        service_operational:
+          type: boolean
+          description: Whether the service is currently operational.
+        status_message:
+          type: string
+          description: Human-readable status message.
+    Platform:
+      type: object
+      description: A supported platform/browser/OS combination.
+      properties:
+        api_name:
+          type: string
+          description: API identifier for the browser.
+        long_name:
+          type: string
+          description: Full display name of the browser.
+        short_version:
+          type: string
+          description: Short version identifier.
+        long_version:
+          type: string
+          description: Full version string.
+        os:
+          type: string
+          description: Operating system name.
+        latest_stable_version:
+          type: string
+          description: Latest stable release version.
+        automation_backend:
+          type: string
+          description: Automation backend (e.g., webdriver).
+        device:
+          type: string
+          nullable: true
+          description: Device name for mobile platforms.
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+        message:
+          type: string
+          description: Summary error message.

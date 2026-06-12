@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/sauce-labs/json-schema/sauce-labs-session-schema.json",
+  "title": "Session",
+  "description": "A real device session on Sauce Labs representing an active remote device allocation for testing.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the session.",
+      "example": "3e832ce3-9cca-4d08-9f01-4b88f56fd350"
+    },
+    "state": {
+      "type": "string",
+      "enum": ["CREATED", "BOOTING", "RUNNING", "CLOSING", "CLOSED", "TIMED_OUT", "ERROR"],
+      "description": "Lifecycle state of the session."
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the session will automatically expire.",
+      "example": "2024-06-01T12:30:00Z"
+    },
+    "retainUntil": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 datetime until which the session results are retained."
+    },
+    "device": {
+      "$ref": "sauce-labs-device-schema.json",
+      "description": "The device allocated to this session."
+    },
+    "appium": {
+      "type": ["object", "null"],
+      "description": "Appium session metadata when the session uses the Appium protocol.",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Appium session ID."
+        },
+        "serverUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Appium server URL for this session."
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "HATEOAS links for available actions on this session.",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uri"
+      },
+      "example": {
+        "self": "https://api.us-west-1.saucelabs.com/rdc/v2/sessions/3e832ce3-9cca-4d08-9f01-4b88f56fd350",
+        "close": "https://api.us-west-1.saucelabs.com/rdc/v2/sessions/3e832ce3-9cca-4d08-9f01-4b88f56fd350"
+      }
+    }
+  },
+  "required": ["id", "state", "expiresAt", "device"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "3e832ce3-9cca-4d08-9f01-4b88f56fd350",
+      "state": "RUNNING",
+      "expiresAt": "2024-06-01T12:30:00Z",
+      "retainUntil": null,
+      "device": {
+        "descriptor": {
+          "name": "iPhone 14",
+          "os": "IOS",
+          "osVersion": "16.4",
+          "formFactor": "PHONE",
+          "manufacturer": "Apple"
+        },
+        "isPrivateDevice": false,
+        "state": "IN_USE",
+        "inUseBy": "john.doe"
+      },
+      "appium": {
+        "sessionId": "abc123def456",
+        "serverUrl": "https://ondemand.us-west-1.saucelabs.com/wd/hub"
+      },
+      "links": {
+        "self": "https://api.us-west-1.saucelabs.com/rdc/v2/sessions/3e832ce3-9cca-4d08-9f01-4b88f56fd350"
+      }
+    }
+  ]
+}

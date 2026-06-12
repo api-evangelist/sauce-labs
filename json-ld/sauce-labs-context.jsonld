@@ -1,0 +1,240 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "sl": "https://docs.saucelabs.com/vocab/",
+
+    "Job": {
+      "@id": "sl:Job",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A test job executed on Sauce Labs infrastructure."
+    },
+    "Build": {
+      "@id": "sl:Build",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A named grouping of related test jobs corresponding to a CI/CD run."
+    },
+    "Session": {
+      "@id": "sl:Session",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A real device session allocating a physical device for testing."
+    },
+    "Device": {
+      "@id": "sl:Device",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A physical iOS or Android device in the Sauce Labs cloud."
+    },
+    "Tunnel": {
+      "@id": "sl:Tunnel",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Sauce Connect Proxy tunnel for private network access."
+    },
+    "Platform": {
+      "@id": "sl:Platform",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A supported OS/browser combination available on Sauce Labs."
+    },
+    "Asset": {
+      "@id": "sl:Asset",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A file artifact (video, log, screenshot) associated with a job."
+    },
+
+    "id": "@id",
+    "type": "@type",
+
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "sl:status",
+      "@type": "xsd:string"
+    },
+    "passed": {
+      "@id": "sl:passed",
+      "@type": "xsd:boolean"
+    },
+    "owner": {
+      "@id": "schema:author",
+      "@type": "xsd:string"
+    },
+    "build": {
+      "@id": "sl:build",
+      "@type": "xsd:string"
+    },
+    "browser": {
+      "@id": "sl:browser",
+      "@type": "xsd:string"
+    },
+    "browser_version": {
+      "@id": "sl:browserVersion",
+      "@type": "xsd:string"
+    },
+    "os": {
+      "@id": "sl:operatingSystem",
+      "@type": "xsd:string"
+    },
+    "automation_backend": {
+      "@id": "sl:automationBackend",
+      "@type": "xsd:string"
+    },
+    "creation_time": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:integer"
+    },
+    "start_time": {
+      "@id": "schema:startDate",
+      "@type": "xsd:integer"
+    },
+    "end_time": {
+      "@id": "schema:endDate",
+      "@type": "xsd:integer"
+    },
+    "modification_time": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:integer"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@list"
+    },
+    "public": {
+      "@id": "schema:accessMode",
+      "@type": "xsd:string"
+    },
+    "video_url": {
+      "@id": "sl:videoUrl",
+      "@type": "@id"
+    },
+    "log_url": {
+      "@id": "sl:logUrl",
+      "@type": "@id"
+    },
+    "commands_not_successful": {
+      "@id": "sl:commandsNotSuccessful",
+      "@type": "xsd:integer"
+    },
+    "consolidated_status": {
+      "@id": "sl:consolidatedStatus",
+      "@type": "xsd:string"
+    },
+    "assigned_tunnel_id": {
+      "@id": "sl:assignedTunnelId",
+      "@type": "xsd:string"
+    },
+    "proxied": {
+      "@id": "sl:proxied",
+      "@type": "xsd:boolean"
+    },
+    "record_screenshots": {
+      "@id": "sl:recordScreenshots",
+      "@type": "xsd:boolean"
+    },
+    "record_video": {
+      "@id": "sl:recordVideo",
+      "@type": "xsd:boolean"
+    },
+
+    "state": {
+      "@id": "sl:state",
+      "@type": "xsd:string"
+    },
+    "expiresAt": {
+      "@id": "sl:expiresAt",
+      "@type": "xsd:dateTime"
+    },
+    "retainUntil": {
+      "@id": "sl:retainUntil",
+      "@type": "xsd:dateTime"
+    },
+    "isPrivateDevice": {
+      "@id": "sl:isPrivateDevice",
+      "@type": "xsd:boolean"
+    },
+    "inUseBy": {
+      "@id": "sl:inUseBy",
+      "@type": "xsd:string"
+    },
+    "descriptor": {
+      "@id": "sl:deviceDescriptor"
+    },
+    "formFactor": {
+      "@id": "sl:formFactor",
+      "@type": "xsd:string"
+    },
+    "osVersion": {
+      "@id": "sl:osVersion",
+      "@type": "xsd:string"
+    },
+    "ramSize": {
+      "@id": "sl:ramSize",
+      "@type": "xsd:integer"
+    },
+    "resolutionWidth": {
+      "@id": "sl:resolutionWidth",
+      "@type": "xsd:integer"
+    },
+    "resolutionHeight": {
+      "@id": "sl:resolutionHeight",
+      "@type": "xsd:integer"
+    },
+
+    "wait_time": {
+      "@id": "sl:waitTime",
+      "@type": "xsd:decimal"
+    },
+    "service_operational": {
+      "@id": "sl:serviceOperational",
+      "@type": "xsd:boolean"
+    },
+    "status_message": {
+      "@id": "sl:statusMessage",
+      "@type": "xsd:string"
+    },
+
+    "feed_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "title": {
+      "@id": "schema:headline",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://saucelabs.com",
+      "@type": "schema:Organization",
+      "schema:name": "Sauce Labs",
+      "schema:description": "Cloud-based cross-browser and mobile app testing platform.",
+      "schema:url": "https://saucelabs.com",
+      "schema:sameAs": [
+        "https://github.com/saucelabs",
+        "https://www.linkedin.com/company/sauce-labs",
+        "https://twitter.com/saucelabs"
+      ]
+    },
+    {
+      "@id": "https://docs.saucelabs.com/dev/api/",
+      "@type": "schema:TechArticle",
+      "schema:name": "Sauce Labs REST API",
+      "schema:description": "Full REST API reference for the Sauce Labs testing platform.",
+      "schema:url": "https://docs.saucelabs.com/dev/api/",
+      "schema:publisher": {
+        "@id": "https://saucelabs.com"
+      }
+    }
+  ]
+}

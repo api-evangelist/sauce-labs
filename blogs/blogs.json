@@ -1,0 +1,14 @@
+{
+  "repo": "sauce-labs",
+  "feeds": [
+    {
+      "source": "https://saucelabs.com/resources/blog",
+      "feed_url": "https://saucelabs.com/blog/feed",
+      "title": "Sauce Labs Blog",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-12T00:00:00Z"
+}

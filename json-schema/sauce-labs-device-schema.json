@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/sauce-labs/json-schema/sauce-labs-device-schema.json",
+  "title": "Device",
+  "description": "A real physical device available in the Sauce Labs cloud for mobile testing.",
+  "type": "object",
+  "properties": {
+    "descriptor": {
+      "type": "object",
+      "description": "Hardware characteristics that identify the device model.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Device model name.",
+          "example": "iPhone 14"
+        },
+        "os": {
+          "type": "string",
+          "enum": ["ANDROID", "IOS"],
+          "description": "Device operating system."
+        },
+        "osVersion": {
+          "type": "string",
+          "description": "Operating system version installed on the device.",
+          "example": "16.4"
+        },
+        "cpuType": {
+          "type": "string",
+          "description": "CPU architecture.",
+          "example": "A15 Bionic"
+        },
+        "cpuCores": {
+          "type": "integer",
+          "description": "Number of CPU cores.",
+          "example": 6
+        },
+        "ramSize": {
+          "type": "integer",
+          "description": "RAM in megabytes.",
+          "example": 6144
+        },
+        "internalStorageSize": {
+          "type": "integer",
+          "description": "Internal storage in megabytes.",
+          "example": 131072
+        },
+        "screenSize": {
+          "type": "string",
+          "description": "Screen diagonal size.",
+          "example": "6.1 inches"
+        },
+        "resolutionWidth": {
+          "type": "integer",
+          "description": "Screen width in pixels.",
+          "example": 1170
+        },
+        "resolutionHeight": {
+          "type": "integer",
+          "description": "Screen height in pixels.",
+          "example": 2532
+        },
+        "formFactor": {
+          "type": "string",
+          "enum": ["PHONE", "TABLET"],
+          "description": "Device form factor."
+        },
+        "manufacturer": {
+          "type": "string",
+          "description": "Device manufacturer.",
+          "example": "Apple"
+        }
+      },
+      "required": ["name", "os"]
+    },
+    "isPrivateDevice": {
+      "type": "boolean",
+      "description": "Whether this device is privately allocated to your organization only."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["AVAILABLE", "IN_USE", "OFFLINE", "MAINTENANCE"],
+      "description": "Current operational state of the device."
+    },
+    "inUseBy": {
+      "type": ["string", "null"],
+      "description": "Username of the person currently using the device.",
+      "example": "jane.smith"
+    }
+  },
+  "required": ["descriptor", "state"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "descriptor": {
+        "name": "iPhone 14",
+        "os": "IOS",
+        "osVersion": "16.4",
+        "cpuType": "A15 Bionic",
+        "cpuCores": 6,
+        "ramSize": 6144,
+        "internalStorageSize": 131072,
+        "screenSize": "6.1 inches",
+        "resolutionWidth": 1170,
+        "resolutionHeight": 2532,
+        "formFactor": "PHONE",
+        "manufacturer": "Apple"
+      },
+      "isPrivateDevice": false,
+      "state": "AVAILABLE",
+      "inUseBy": null
+    },
+    {
+      "descriptor": {
+        "name": "Samsung Galaxy S23",
+        "os": "ANDROID",
+        "osVersion": "13",
+        "cpuType": "Snapdragon 8 Gen 2",
+        "cpuCores": 8,
+        "ramSize": 8192,
+        "internalStorageSize": 262144,
+        "screenSize": "6.1 inches",
+        "resolutionWidth": 1080,
+        "resolutionHeight": 2340,
+        "formFactor": "PHONE",
+        "manufacturer": "Samsung"
+      },
+      "isPrivateDevice": false,
+      "state": "IN_USE",
+      "inUseBy": "john.doe"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/sauce-labs/json-schema/sauce-labs-job-schema.json",
+  "title": "Job",
+  "description": "A Sauce Labs test job representing a single automated or manual test session run on Sauce Labs infrastructure.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique job identifier (UUID).",
+      "example": "f110d69d39a54e93bbf8c73e7ebb0b80"
+    },
+    "name": {
+      "type": ["string", "null"],
+      "description": "Human-readable name for the job.",
+      "example": "Login Flow - Chrome Latest"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["new", "queued", "in progress", "passed", "failed", "error", "complete"],
+      "description": "Current status of the job."
+    },
+    "passed": {
+      "type": ["boolean", "null"],
+      "description": "Whether the job was explicitly marked as passed by the test code."
+    },
+    "owner": {
+      "type": "string",
+      "description": "Sauce Labs username of the job owner.",
+      "example": "john.doe"
+    },
+    "build": {
+      "type": ["string", "null"],
+      "description": "Build identifier grouping related jobs.",
+      "example": "release-2024-06"
+    },
+    "browser": {
+      "type": "string",
+      "description": "Browser used in the job.",
+      "example": "chrome"
+    },
+    "browser_version": {
+      "type": "string",
+      "description": "Full browser version string.",
+      "example": "125.0.6422.112"
+    },
+    "browser_short_version": {
+      "type": "string",
+      "description": "Shortened browser version.",
+      "example": "125"
+    },
+    "os": {
+      "type": "string",
+      "description": "Operating system of the virtual machine.",
+      "example": "Windows 11"
+    },
+    "automation_backend": {
+      "type": "string",
+      "description": "Automation framework used.",
+      "enum": ["webdriver", "appium", "playwright", "cypress", "testcafe", "espresso", "xcuitest"],
+      "example": "webdriver"
+    },
+    "creation_time": {
+      "type": "integer",
+      "description": "Unix timestamp (seconds) when the job was created.",
+      "example": 1717200000
+    },
+    "start_time": {
+      "type": ["integer", "null"],
+      "description": "Unix timestamp when the job started running.",
+      "example": 1717200005
+    },
+    "end_time": {
+      "type": ["integer", "null"],
+      "description": "Unix timestamp when the job finished.",
+      "example": 1717200125
+    },
+    "modification_time": {
+      "type": "integer",
+      "description": "Unix timestamp of the last update to the job.",
+      "example": 1717200126
+    },
+    "deletion_time": {
+      "type": ["integer", "null"],
+      "description": "Unix timestamp when the job was deleted, if applicable."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "User-defined labels for categorizing jobs.",
+      "example": ["regression", "login", "chrome"]
+    },
+    "public": {
+      "type": "string",
+      "enum": ["public", "private", "team", "share"],
+      "description": "Visibility level of the job.",
+      "example": "private"
+    },
+    "video_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to download the session video recording.",
+      "example": "https://assets.saucelabs.com/jobs/f110d69d39a54e93bbf8c73e7ebb0b80/video.mp4"
+    },
+    "log_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to the Selenium server log.",
+      "example": "https://assets.saucelabs.com/jobs/f110d69d39a54e93bbf8c73e7ebb0b80/selenium-server.log"
+    },
+    "commands_not_successful": {
+      "type": "integer",
+      "description": "Number of Selenium/WebDriver commands that returned errors.",
+      "example": 0
+    },
+    "consolidated_status": {
+      "type": "string",
+      "description": "Consolidated pass/fail/error status string.",
+      "example": "passed"
+    },
+    "assigned_tunnel_id": {
+      "type": ["string", "null"],
+      "description": "Sauce Connect tunnel ID used by this job.",
+      "example": "my-tunnel"
+    },
+    "proxied": {
+      "type": "boolean",
+      "description": "Whether the job was routed through Sauce Connect."
+    },
+    "proxy_host": {
+      "type": ["string", "null"],
+      "description": "Proxy host if the session used a proxy."
+    },
+    "record_screenshots": {
+      "type": "boolean",
+      "description": "Whether screenshots were captured during the session.",
+      "example": true
+    },
+    "record_video": {
+      "type": "boolean",
+      "description": "Whether the session was video-recorded.",
+      "example": true
+    },
+    "selenium_version": {
+      "type": ["string", "null"],
+      "description": "Selenium version used.",
+      "example": "4.18.1"
+    },
+    "manual": {
+      "type": "boolean",
+      "description": "Whether the job was a manual (live) test."
+    },
+    "base_config": {
+      "type": "object",
+      "description": "WebDriver/Appium capabilities used to configure the session.",
+      "additionalProperties": true
+    },
+    "custom-data": {
+      "type": ["object", "null"],
+      "description": "Arbitrary key-value pairs set by the test author.",
+      "additionalProperties": true
+    },
+    "video_secret": {
+      "type": ["string", "null"],
+      "description": "Secret token for accessing a shared video URL."
+    },
+    "collects_automator_log": {
+      "type": "boolean",
+      "description": "Whether the automator log was captured."
+    },
+    "command_counts": {
+      "type": "object",
+      "description": "Breakdown of command counts by result.",
+      "properties": {
+        "All": {
+          "type": "integer"
+        },
+        "Error": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "required": ["id", "status", "owner", "creation_time"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "f110d69d39a54e93bbf8c73e7ebb0b80",
+      "name": "Login Flow - Chrome Latest",
+      "status": "passed",
+      "passed": true,
+      "owner": "john.doe",
+      "build": "release-2024-06",
+      "browser": "chrome",
+      "browser_version": "125.0.6422.112",
+      "browser_short_version": "125",
+      "os": "Windows 11",
+      "automation_backend": "webdriver",
+      "creation_time": 1717200000,
+      "start_time": 1717200005,
+      "end_time": 1717200125,
+      "modification_time": 1717200126,
+      "deletion_time": null,
+      "tags": ["regression", "login"],
+      "public": "private",
+      "video_url": "https://assets.saucelabs.com/jobs/f110d69d39a54e93bbf8c73e7ebb0b80/video.mp4",
+      "log_url": "https://assets.saucelabs.com/jobs/f110d69d39a54e93bbf8c73e7ebb0b80/selenium-server.log",
+      "commands_not_successful": 0,
+      "consolidated_status": "passed",
+      "assigned_tunnel_id": null,
+      "proxied": false,
+      "proxy_host": null,
+      "record_screenshots": true,
+      "record_video": true,
+      "selenium_version": "4.18.1",
+      "manual": false,
+      "collects_automator_log": false,
+      "video_secret": null,
+      "command_counts": {"All": 42, "Error": 0},
+      "base_config": {
+        "browserName": "chrome",
+        "platformName": "Windows 11",
+        "sauce:options": {
+          "build": "release-2024-06"
+        }
+      },
+      "custom-data": null
+    }
+  ]
+}

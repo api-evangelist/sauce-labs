@@ -1,0 +1,133 @@
+---
+vocabulary:
+  provider: Sauce Labs
+  description: >-
+    Domain terms and concepts used across the Sauce Labs platform APIs for
+    cross-browser and mobile testing in the cloud.
+  terms:
+    - term: job
+      definition: >-
+        A single test session execution on Sauce Labs infrastructure. A job is
+        created when a WebDriver or Appium session connects to the Sauce Labs
+        grid, and it records the status, result, assets, and metadata of that
+        test run.
+      aliases: [test session, test run]
+      related: [build, tunnel, asset]
+
+    - term: build
+      definition: >-
+        A named grouping of related jobs, typically corresponding to a CI/CD
+        pipeline run or a software release. Build names are set via Sauce
+        capabilities and allow teams to aggregate test results across multiple
+        jobs.
+      related: [job, CI/CD]
+
+    - term: tunnel
+      definition: >-
+        A Sauce Connect Proxy tunnel that creates an encrypted connection between
+        a Sauce Labs virtual machine or real device and a private network or
+        localhost. Required for testing applications that are not publicly
+        accessible on the internet.
+      aliases: [Sauce Connect tunnel]
+      related: [Sauce Connect, proxy]
+
+    - term: real device
+      definition: >-
+        A physical iOS or Android device hosted in a Sauce Labs data center and
+        available for remote testing. Real devices provide authentic test
+        results for mobile applications, as opposed to emulators or simulators.
+      aliases: [RDC device, physical device]
+      related: [session, device descriptor, emulator]
+
+    - term: session
+      definition: >-
+        A real device session representing an active, allocated connection to a
+        physical device. Sessions are created via the Real Device Access API and
+        have a lifecycle (BOOTING → RUNNING → CLOSING → CLOSED).
+      related: [real device, Appium, device state]
+
+    - term: device descriptor
+      definition: >-
+        A set of hardware characteristics that identifies a device model,
+        including OS, OS version, screen dimensions, CPU, and RAM. Used to
+        select devices when creating sessions or configuring test capabilities.
+      related: [real device, session creation]
+
+    - term: concurrency
+      definition: >-
+        The number of simultaneous test jobs a user or organization can run at
+        one time. Concurrency limits are enforced per account tier and can be
+        tracked via the Jobs API.
+      related: [parallelism, capacity, plan]
+
+    - term: asset
+      definition: >-
+        A file artifact associated with a completed test job, such as a video
+        recording (video.mp4), Selenium server log (selenium-server.log),
+        screenshots (screenshots.zip), or automator log.
+      related: [job, video, log, screenshot]
+
+    - term: automation backend
+      definition: >-
+        The testing framework used to drive a job. Supported backends include
+        WebDriver (selenium), Appium, Playwright, Cypress, TestCafe, Espresso
+        (Android), and XCUITest (iOS).
+      aliases: [framework, test runner]
+      related: [WebDriver, Appium, Espresso, XCUITest]
+
+    - term: Sauce Connect
+      definition: >-
+        A Sauce Labs proxy server client that opens an encrypted tunnel between
+        the Sauce Labs cloud and the user's private network, enabling testing of
+        internally hosted applications without exposing them to the public internet.
+      related: [tunnel, proxy, security]
+
+    - term: access key
+      definition: >-
+        A secret token tied to a Sauce Labs user account, used together with the
+        username to authenticate API requests via HTTP Basic Authentication.
+        Equivalent to an API key or secret.
+      aliases: [API key, secret key]
+      related: [authentication, username]
+
+    - term: platform
+      definition: >-
+        A supported OS/browser or OS/device combination available on Sauce Labs,
+        such as "Windows 11 + Chrome 125" or "iOS 16 + Safari". Platforms can
+        be queried via the Platform API.
+      related: [browser, OS, device descriptor]
+
+    - term: passed
+      definition: >-
+        A boolean flag explicitly set by test code to record whether the test
+        passed or failed. Distinct from the job status (which reflects
+        infrastructure state), the passed flag reflects the business-logic
+        outcome as determined by the test author.
+      related: [job, status, consolidated status]
+
+    - term: consolidated status
+      definition: >-
+        A derived status string that combines the job infrastructure status and
+        the passed/failed flag into a single human-readable result such as
+        "passed", "failed", "error", or "complete".
+      related: [status, passed, job]
+
+    - term: private device
+      definition: >-
+        A real device that is exclusively allocated to a single Sauce Labs
+        organization and not shared with other customers.
+      related: [real device, device descriptor, session]
+
+    - term: storage
+      definition: >-
+        The Sauce Labs application storage service where users upload APK, IPA,
+        or ZIP files before referencing them in test jobs or real device
+        sessions. Files are addressed by a file ID returned at upload time.
+      related: [app upload, mobile testing]
+
+    - term: MCP
+      definition: >-
+        Model Context Protocol — a standard that Sauce Labs supports via its
+        sauce-api-mcp server, allowing AI agents to interact with the Sauce Labs
+        APIs programmatically using natural language tooling.
+      related: [AI, automation, integration]

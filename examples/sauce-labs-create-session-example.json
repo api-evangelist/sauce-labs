@@ -1,0 +1,38 @@
+{
+  "_comment": "POST /rdc/v2/sessions - Create a real device session",
+  "request": {
+    "deviceDescriptorName": "iPhone 14",
+    "osVersion": "16.4",
+    "privateDevicesOnly": false,
+    "tunnelId": null
+  },
+  "response": {
+    "id": "3e832ce3-9cca-4d08-9f01-4b88f56fd350",
+    "state": "BOOTING",
+    "expiresAt": "2024-06-01T12:30:00Z",
+    "retainUntil": null,
+    "device": {
+      "descriptor": {
+        "name": "iPhone 14",
+        "os": "IOS",
+        "osVersion": "16.4",
+        "cpuType": "A15 Bionic",
+        "cpuCores": 6,
+        "ramSize": 6144,
+        "internalStorageSize": 131072,
+        "screenSize": "6.1 inches",
+        "resolutionWidth": 1170,
+        "resolutionHeight": 2532,
+        "formFactor": "PHONE",
+        "manufacturer": "Apple"
+      },
+      "isPrivateDevice": false,
+      "state": "IN_USE",
+      "inUseBy": "john.doe"
+    },
+    "appium": null,
+    "links": {
+      "self": "https://api.us-west-1.saucelabs.com/rdc/v2/sessions/3e832ce3-9cca-4d08-9f01-4b88f56fd350"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "_comment": "GET /v1/info/status - Platform operational status",
+  "response": {
+    "wait_time": 0.5,
+    "service_operational": true,
+    "status_message": "Basic service is operational"
+  }
+}
