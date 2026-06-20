@@ -11,7 +11,7 @@ description: >-
   Sauce Labs also offers API testing, contract testing, error reporting,
   and an MCP server for AI agent integrations.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Testing
   - Cross-Browser Testing
