@@ -224,11 +224,11 @@ common:
     url: https://saucelabs.com/pricing
   - type: StatusPage
     url: https://status.saucelabs.com/
-  - type: Changelog
+  - type: ChangeLog
     url: https://changelog.saucelabs.com/en
   - type: MCP
     url: https://github.com/saucelabs/sauce-api-mcp
-  - type: SDK
+  - type: SDKs
     url: https://github.com/saucelabs/node-saucelabs
   - type: Vocabulary
     url: vocabulary/sauce-labs-vocabulary.yml
