@@ -208,6 +208,10 @@ apis:
         url: https://raw.githubusercontent.com/saucelabs/sauce-docs/refs/heads/main/static/oas/performance.json
 
 common:
+  - type: DomainSecurity
+    url: security/sauce-labs-domain-security.yml
+  - type: Authentication
+    url: authentication/sauce-labs-authentication.yml
   - type: Website
     url: https://saucelabs.com
   - type: Documentation

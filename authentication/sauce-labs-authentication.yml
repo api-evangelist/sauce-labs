@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sauce-labs-jobs-openapi.yml, openapi/sauce-labs-real-device-access-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Use your Sauce Labs username and access key as the HTTP Basic Authentication
+    credentials.
+  sources:
+  - openapi/sauce-labs-jobs-openapi.yml
+  - openapi/sauce-labs-real-device-access-openapi.yml
