@@ -2,13 +2,14 @@
   "repo": "sauce-labs",
   "feeds": [
     {
-      "source": "https://saucelabs.com/resources/blog",
-      "feed_url": "",
-      "saved": 4,
-      "method": "agent-scrape"
+      "source": "https://twitter.com/saucelabs",
+      "feed_url": "https://twitter.com/saucelabs",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 5,
-  "fetched": "2026-06-27T13:09:03Z",
-  "agent_pulled": "2026-06-27"
+  "post_count": 6,
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
