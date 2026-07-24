@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Sauce Labs Jobs Devices Job Assets API
+  description: Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.
+  version: '1.1'
+  contact:
+    name: Sauce Labs Support
+    url: https://support.saucelabs.com
+  termsOfService: https://saucelabs.com/terms-of-service
+  license:
+    name: Proprietary
+    url: https://saucelabs.com/terms-of-service
+servers:
+- url: https://api.us-west-1.saucelabs.com
+  description: US West (primary)
+- url: https://api.eu-central-1.saucelabs.com
+  description: EU Central
+security:
+- basicAuth: []
+tags:
+- name: Job Assets
+paths:
+  /v1/jobs/{id}/{assetName}:
+    get:
+      operationId: getJobAsset
+      summary: Get a Job Asset
+      description: Download a job asset such as log files, screenshots, or video recordings. Common asset names include `selenium-server.log`, `video.mp4`, and `screenshots.zip`.
+      tags:
+      - Job Assets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: assetName
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - selenium-server.log
+          - video.mp4
+          - screenshots.zip
+          - sauce-log
+          - automator.log
+      responses:
+        '200':
+          description: Asset binary content.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+        message:
+          type: string
+          description: Summary error message.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Use your Sauce Labs username and access key as the HTTP Basic Authentication credentials.
+externalDocs:
+  description: Sauce Labs Jobs API Documentation
+  url: https://docs.saucelabs.com/dev/api/jobs/
