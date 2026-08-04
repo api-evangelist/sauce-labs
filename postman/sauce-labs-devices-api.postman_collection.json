@@ -1,0 +1,322 @@
+{
+  "info": {
+    "_postman_id": "ba21cc77-ffa1-4732-bbab-1a7231c834b2",
+    "name": "Sauce Labs Jobs Devices API",
+    "description": "Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.\n\nContact Support:\n Name: Sauce Labs Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:04.000Z",
+    "updatedAt": "2026-07-28T02:51:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ba21cc77-ffa1-4732-bbab-1a7231c834b2"
+  },
+  "item": [
+    {
+      "name": "devices",
+      "item": [
+        {
+          "name": "status",
+          "item": [
+            {
+              "name": "Get Device Availability Status",
+              "id": "5ee5dbcd-8376-4eb8-8d2b-0536bceaeebf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices",
+                    "status"
+                  ]
+                },
+                "description": "Returns availability status for all devices in the cloud."
+              },
+              "response": [
+                {
+                  "id": "43028bf5-896c-48dd-885e-643b9f7d1933",
+                  "name": "Device status map.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"quif\": {\n    \"deviceId\": \"<string>\",\n    \"status\": \"MAINTENANCE\",\n    \"sessionId\": \"<string>\"\n  },\n  \"exa\": {\n    \"deviceId\": \"<string>\",\n    \"status\": \"OFFLINE\",\n    \"sessionId\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:05.000Z",
+                  "updatedAt": "2026-07-28T02:51:05.000Z",
+                  "uid": "35240-43028bf5-896c-48dd-885e-643b9f7d1933"
+                },
+                {
+                  "id": "59eba4b4-2e76-4ed3-9a8b-2868786cfc99",
+                  "name": "Authentication credentials missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/devices/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "devices",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:51:05.000Z",
+                  "updatedAt": "2026-07-28T02:51:05.000Z",
+                  "uid": "35240-59eba4b4-2e76-4ed3-9a8b-2868786cfc99"
+                }
+              ],
+              "createdAt": "2026-07-28T02:51:05.000Z",
+              "updatedAt": "2026-07-28T02:51:05.000Z",
+              "uid": "35240-5ee5dbcd-8376-4eb8-8d2b-0536bceaeebf"
+            }
+          ],
+          "id": "b3fdf460-73c0-40cc-b45d-9c484888e137",
+          "createdAt": "2026-07-28T02:51:05.000Z",
+          "updatedAt": "2026-07-28T02:51:05.000Z",
+          "uid": "35240-b3fdf460-73c0-40cc-b45d-9c484888e137"
+        },
+        {
+          "name": "List Available Devices",
+          "id": "4f808a55-866e-4ee9-9e9e-14edce2380c2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/devices?organization_id=<string>&os=IOS",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devices"
+              ],
+              "query": [
+                {
+                  "description": "Filter devices by organization.",
+                  "key": "organization_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by operating system.",
+                  "key": "os",
+                  "value": "IOS"
+                }
+              ]
+            },
+            "description": "Returns the list of real devices available in the Sauce Labs cloud."
+          },
+          "response": [
+            {
+              "id": "c157e1ba-155f-4526-b621-2d5f10208a93",
+              "name": "List of devices.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?organization_id=<string>&os=IOS",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter devices by organization.",
+                      "key": "organization_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by operating system.",
+                      "key": "os",
+                      "value": "IOS"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entities\": [\n    {\n      \"descriptor\": {\n        \"name\": \"<string>\",\n        \"os\": \"ANDROID\",\n        \"osVersion\": \"<string>\",\n        \"cpuType\": \"<string>\",\n        \"cpuCores\": \"<integer>\",\n        \"ramSize\": \"<integer>\",\n        \"screenSize\": \"<string>\",\n        \"resolutionWidth\": \"<integer>\",\n        \"resolutionHeight\": \"<integer>\",\n        \"formFactor\": \"PHONE\"\n      },\n      \"isPrivateDevice\": \"<boolean>\",\n      \"state\": \"AVAILABLE\",\n      \"inUseBy\": \"<string>\"\n    },\n    {\n      \"descriptor\": {\n        \"name\": \"<string>\",\n        \"os\": \"ANDROID\",\n        \"osVersion\": \"<string>\",\n        \"cpuType\": \"<string>\",\n        \"cpuCores\": \"<integer>\",\n        \"ramSize\": \"<integer>\",\n        \"screenSize\": \"<string>\",\n        \"resolutionWidth\": \"<integer>\",\n        \"resolutionHeight\": \"<integer>\",\n        \"formFactor\": \"TABLET\"\n      },\n      \"isPrivateDevice\": \"<boolean>\",\n      \"state\": \"IN_USE\",\n      \"inUseBy\": \"<string>\"\n    }\n  ],\n  \"metaData\": {\n    \"offset\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"totalRecords\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:51:05.000Z",
+              "updatedAt": "2026-07-28T02:51:05.000Z",
+              "uid": "35240-c157e1ba-155f-4526-b621-2d5f10208a93"
+            },
+            {
+              "id": "8be5ce7c-dc59-488e-9e42-72835a831288",
+              "name": "Authentication credentials missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/devices?organization_id=<string>&os=IOS",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter devices by organization.",
+                      "key": "organization_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by operating system.",
+                      "key": "os",
+                      "value": "IOS"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:51:05.000Z",
+              "updatedAt": "2026-07-28T02:51:05.000Z",
+              "uid": "35240-8be5ce7c-dc59-488e-9e42-72835a831288"
+            }
+          ],
+          "createdAt": "2026-07-28T02:51:05.000Z",
+          "updatedAt": "2026-07-28T02:51:05.000Z",
+          "uid": "35240-4f808a55-866e-4ee9-9e9e-14edce2380c2"
+        }
+      ],
+      "id": "e3e9a9c7-add0-4d69-aa71-5ee868bb1044",
+      "createdAt": "2026-07-28T02:51:05.000Z",
+      "updatedAt": "2026-07-28T02:51:05.000Z",
+      "uid": "35240-e3e9a9c7-add0-4d69-aa71-5ee868bb1044"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.us-west-1.saucelabs.com"
+    }
+  ]
+}

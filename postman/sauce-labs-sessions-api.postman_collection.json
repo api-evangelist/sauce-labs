@@ -1,0 +1,1438 @@
+{
+  "info": {
+    "_postman_id": "44e0faa0-c8dc-42e7-8cd5-29c926e0c2f0",
+    "name": "Sauce Labs Jobs Devices Sessions API",
+    "description": "Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.\n\nContact Support:\n Name: Sauce Labs Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:25.000Z",
+    "updatedAt": "2026-07-28T02:51:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-44e0faa0-c8dc-42e7-8cd5-29c926e0c2f0"
+  },
+  "item": [
+    {
+      "name": "sessions",
+      "item": [
+        {
+          "name": "{sessionId}",
+          "item": [
+            {
+              "name": "device",
+              "item": [
+                {
+                  "name": "executeShellCommand",
+                  "item": [
+                    {
+                      "name": "Execute Shell Command on Device",
+                      "id": "0abd709b-971f-4890-8607-2a64c6b164c6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"command\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sessions/:sessionId/device/executeShellCommand",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sessions",
+                            ":sessionId",
+                            "device",
+                            "executeShellCommand"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f4cec046-8044-4e74-a20e-97c14d5bba78",
+                              "key": "sessionId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Runs a shell command on the device attached to the session."
+                      },
+                      "response": [
+                        {
+                          "id": "ae959b66-8002-4002-9316-4a259a56c74b",
+                          "name": "Command executed.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"command\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/executeShellCommand",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "executeShellCommand"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"output\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-ae959b66-8002-4002-9316-4a259a56c74b"
+                        },
+                        {
+                          "id": "9346bc9a-339c-44f1-8594-12e62b57baaf",
+                          "name": "Authentication credentials missing or invalid.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"command\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/executeShellCommand",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "executeShellCommand"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-9346bc9a-339c-44f1-8594-12e62b57baaf"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:25.000Z",
+                      "updatedAt": "2026-07-28T02:51:25.000Z",
+                      "uid": "35240-0abd709b-971f-4890-8607-2a64c6b164c6"
+                    }
+                  ],
+                  "id": "109ffbe5-6452-4412-b8d5-846b183204d0",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-109ffbe5-6452-4412-b8d5-846b183204d0"
+                },
+                {
+                  "name": "installApp",
+                  "item": [
+                    {
+                      "name": "Install App on Device",
+                      "id": "2999b513-a10e-4348-b030-f89b2ecc2c13",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"appUrl\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sessions/:sessionId/device/installApp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sessions",
+                            ":sessionId",
+                            "device",
+                            "installApp"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2336090b-8452-4c52-a47b-c4cecbb31e4a",
+                              "key": "sessionId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Installs an application on the device in the current session."
+                      },
+                      "response": [
+                        {
+                          "id": "a70faabb-b7a5-4e3c-b8a7-f699e51a67b3",
+                          "name": "App installed.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"appUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/installApp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "installApp"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-a70faabb-b7a5-4e3c-b8a7-f699e51a67b3"
+                        },
+                        {
+                          "id": "d1c9431c-fd7d-4570-a3ea-5812416f6199",
+                          "name": "Invalid request parameters.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"appUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/installApp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "installApp"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-d1c9431c-fd7d-4570-a3ea-5812416f6199"
+                        },
+                        {
+                          "id": "63747fe2-f20f-40f2-a437-8ddb2ae1a448",
+                          "name": "Authentication credentials missing or invalid.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"appUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/installApp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "installApp"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-63747fe2-f20f-40f2-a437-8ddb2ae1a448"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:25.000Z",
+                      "updatedAt": "2026-07-28T02:51:25.000Z",
+                      "uid": "35240-2999b513-a10e-4348-b030-f89b2ecc2c13"
+                    }
+                  ],
+                  "id": "35f3e172-41b3-4307-8b25-a04328669c4c",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-35f3e172-41b3-4307-8b25-a04328669c4c"
+                },
+                {
+                  "name": "uninstallApp",
+                  "item": [
+                    {
+                      "name": "Uninstall App from Device",
+                      "id": "53d0e299-a0df-404a-ace8-e02f6d15cf44",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"bundleId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sessions/:sessionId/device/uninstallApp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sessions",
+                            ":sessionId",
+                            "device",
+                            "uninstallApp"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3cc3424a-a6b6-49df-b48e-3569b4eebb6f",
+                              "key": "sessionId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Removes an app from the device in the current session."
+                      },
+                      "response": [
+                        {
+                          "id": "edc155a9-14e2-430d-b1ca-61e0161f4958",
+                          "name": "App uninstalled.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"bundleId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/uninstallApp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "uninstallApp"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-edc155a9-14e2-430d-b1ca-61e0161f4958"
+                        },
+                        {
+                          "id": "19fb3f1e-62dc-4f8a-91ee-9fbfc9a951ea",
+                          "name": "Invalid request parameters.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"bundleId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/uninstallApp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "uninstallApp"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-19fb3f1e-62dc-4f8a-91ee-9fbfc9a951ea"
+                        },
+                        {
+                          "id": "becabec3-a5ed-48f9-85be-7d8c2229aac9",
+                          "name": "Authentication credentials missing or invalid.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"bundleId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sessions/:sessionId/device/uninstallApp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sessions",
+                                ":sessionId",
+                                "device",
+                                "uninstallApp"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:51:25.000Z",
+                          "updatedAt": "2026-07-28T02:51:25.000Z",
+                          "uid": "35240-becabec3-a5ed-48f9-85be-7d8c2229aac9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:25.000Z",
+                      "updatedAt": "2026-07-28T02:51:25.000Z",
+                      "uid": "35240-53d0e299-a0df-404a-ace8-e02f6d15cf44"
+                    }
+                  ],
+                  "id": "c0b62aa1-d9bb-4362-ad86-f8f5af8eb7bf",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-c0b62aa1-d9bb-4362-ad86-f8f5af8eb7bf"
+                }
+              ],
+              "id": "5277ca11-4972-44f9-a0fa-0901d106e100",
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-5277ca11-4972-44f9-a0fa-0901d106e100"
+            },
+            {
+              "name": "Get Session Details",
+              "id": "4d72447f-e85b-4885-ae04-bed96e27e639",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions/:sessionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "24b717be-2c27-41f1-9d60-33f3f20cc9b8",
+                      "key": "sessionId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns full details for a specific real device session."
+              },
+              "response": [
+                {
+                  "id": "6b1ed4a2-ec9e-4465-bff7-d935b27998e2",
+                  "name": "Session details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"state\": \"CLOSED\",\n  \"expiresAt\": \"<dateTime>\",\n  \"retainUntil\": \"<dateTime>\",\n  \"device\": {\n    \"descriptor\": {\n      \"name\": \"<string>\",\n      \"os\": \"IOS\",\n      \"osVersion\": \"<string>\",\n      \"cpuType\": \"<string>\",\n      \"cpuCores\": \"<integer>\",\n      \"ramSize\": \"<integer>\",\n      \"screenSize\": \"<string>\",\n      \"resolutionWidth\": \"<integer>\",\n      \"resolutionHeight\": \"<integer>\",\n      \"formFactor\": \"TABLET\"\n    },\n    \"isPrivateDevice\": \"<boolean>\",\n    \"state\": \"AVAILABLE\",\n    \"inUseBy\": \"<string>\"\n  },\n  \"appium\": {\n    \"sessionId\": \"<string>\",\n    \"serverUrl\": \"<uri>\"\n  },\n  \"links\": {\n    \"amet8e\": \"<string>\",\n    \"nostrud1fe\": \"<string>\",\n    \"adc27\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-6b1ed4a2-ec9e-4465-bff7-d935b27998e2"
+                },
+                {
+                  "id": "6d628326-24a3-4073-857b-d55408113a35",
+                  "name": "Authentication credentials missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-6d628326-24a3-4073-857b-d55408113a35"
+                },
+                {
+                  "id": "f828b30e-1f8f-496d-8143-1b92736f5b75",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-f828b30e-1f8f-496d-8143-1b92736f5b75"
+                }
+              ],
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-4d72447f-e85b-4885-ae04-bed96e27e639"
+            },
+            {
+              "name": "Close a Session",
+              "id": "c7e84861-e2d2-4d0c-940e-2305f0282b4e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions/:sessionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "757aa397-bdbd-490b-ba0b-683c662b552b",
+                      "key": "sessionId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Terminates a real device session and releases the device."
+              },
+              "response": [
+                {
+                  "id": "08a9e947-9862-4faf-8f4a-d2447374224d",
+                  "name": "Session closed successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-08a9e947-9862-4faf-8f4a-d2447374224d"
+                },
+                {
+                  "id": "a2279177-27d2-4ce2-a0fe-98a8e0310bca",
+                  "name": "Authentication credentials missing or invalid.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-a2279177-27d2-4ce2-a0fe-98a8e0310bca"
+                },
+                {
+                  "id": "451de187-6e80-4b95-98d5-755c3a98a616",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:51:25.000Z",
+                  "updatedAt": "2026-07-28T02:51:25.000Z",
+                  "uid": "35240-451de187-6e80-4b95-98d5-755c3a98a616"
+                }
+              ],
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-c7e84861-e2d2-4d0c-940e-2305f0282b4e"
+            }
+          ],
+          "id": "01fe120f-80c5-436a-8360-dbf257788b34",
+          "createdAt": "2026-07-28T02:51:25.000Z",
+          "updatedAt": "2026-07-28T02:51:25.000Z",
+          "uid": "35240-01fe120f-80c5-436a-8360-dbf257788b34"
+        },
+        {
+          "name": "List Active Sessions",
+          "id": "7da3fbcd-851f-4961-9e25-b484fa1e30ff",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sessions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sessions"
+              ]
+            },
+            "description": "Returns all active real device sessions for the authenticated user."
+          },
+          "response": [
+            {
+              "id": "4416e2c5-92d9-4aff-aa67-dc20069d040c",
+              "name": "List of active sessions.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entities\": [\n    {\n      \"id\": \"<string>\",\n      \"state\": \"CLOSING\",\n      \"expiresAt\": \"<dateTime>\",\n      \"retainUntil\": \"<dateTime>\",\n      \"device\": {\n        \"descriptor\": {\n          \"name\": \"<string>\",\n          \"os\": \"ANDROID\",\n          \"osVersion\": \"<string>\",\n          \"cpuType\": \"<string>\",\n          \"cpuCores\": \"<integer>\",\n          \"ramSize\": \"<integer>\",\n          \"screenSize\": \"<string>\",\n          \"resolutionWidth\": \"<integer>\",\n          \"resolutionHeight\": \"<integer>\",\n          \"formFactor\": \"TABLET\"\n        },\n        \"isPrivateDevice\": \"<boolean>\",\n        \"state\": \"AVAILABLE\",\n        \"inUseBy\": \"<string>\"\n      },\n      \"appium\": {\n        \"sessionId\": \"<string>\",\n        \"serverUrl\": \"<uri>\"\n      },\n      \"links\": {\n        \"veniam5\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"state\": \"CREATED\",\n      \"expiresAt\": \"<dateTime>\",\n      \"retainUntil\": \"<dateTime>\",\n      \"device\": {\n        \"descriptor\": {\n          \"name\": \"<string>\",\n          \"os\": \"IOS\",\n          \"osVersion\": \"<string>\",\n          \"cpuType\": \"<string>\",\n          \"cpuCores\": \"<integer>\",\n          \"ramSize\": \"<integer>\",\n          \"screenSize\": \"<string>\",\n          \"resolutionWidth\": \"<integer>\",\n          \"resolutionHeight\": \"<integer>\",\n          \"formFactor\": \"TABLET\"\n        },\n        \"isPrivateDevice\": \"<boolean>\",\n        \"state\": \"AVAILABLE\",\n        \"inUseBy\": \"<string>\"\n      },\n      \"appium\": {\n        \"sessionId\": \"<string>\",\n        \"serverUrl\": \"<uri>\"\n      },\n      \"links\": {\n        \"amet_8\": \"<string>\"\n      }\n    }\n  ],\n  \"metaData\": {\n    \"offset\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"totalRecords\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-4416e2c5-92d9-4aff-aa67-dc20069d040c"
+            },
+            {
+              "id": "98c0f799-2e01-41bb-b7f3-1cde69e9d3c5",
+              "name": "Authentication credentials missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-98c0f799-2e01-41bb-b7f3-1cde69e9d3c5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:51:25.000Z",
+          "updatedAt": "2026-07-28T02:51:25.000Z",
+          "uid": "35240-7da3fbcd-851f-4961-9e25-b484fa1e30ff"
+        },
+        {
+          "name": "Create a Device Session",
+          "id": "d8b47f47-8d4a-405d-83f3-755e888bd7fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceDescriptorName\": \"<string>\",\n  \"osVersion\": \"<string>\",\n  \"privateDevicesOnly\": false,\n  \"tunnelId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sessions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sessions"
+              ]
+            },
+            "description": "Allocates a real device and creates a new session. The device can be specified by ID or by descriptor criteria."
+          },
+          "response": [
+            {
+              "id": "7576327c-9665-4da3-ac59-05602f36d2e8",
+              "name": "Session created successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceDescriptorName\": \"<string>\",\n  \"osVersion\": \"<string>\",\n  \"privateDevicesOnly\": false,\n  \"tunnelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"state\": \"CLOSED\",\n  \"expiresAt\": \"<dateTime>\",\n  \"retainUntil\": \"<dateTime>\",\n  \"device\": {\n    \"descriptor\": {\n      \"name\": \"<string>\",\n      \"os\": \"IOS\",\n      \"osVersion\": \"<string>\",\n      \"cpuType\": \"<string>\",\n      \"cpuCores\": \"<integer>\",\n      \"ramSize\": \"<integer>\",\n      \"screenSize\": \"<string>\",\n      \"resolutionWidth\": \"<integer>\",\n      \"resolutionHeight\": \"<integer>\",\n      \"formFactor\": \"TABLET\"\n    },\n    \"isPrivateDevice\": \"<boolean>\",\n    \"state\": \"AVAILABLE\",\n    \"inUseBy\": \"<string>\"\n  },\n  \"appium\": {\n    \"sessionId\": \"<string>\",\n    \"serverUrl\": \"<uri>\"\n  },\n  \"links\": {\n    \"amet8e\": \"<string>\",\n    \"nostrud1fe\": \"<string>\",\n    \"adc27\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-7576327c-9665-4da3-ac59-05602f36d2e8"
+            },
+            {
+              "id": "a3cf9b7b-5ab9-4339-b62c-76bd1f9a34f9",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceDescriptorName\": \"<string>\",\n  \"osVersion\": \"<string>\",\n  \"privateDevicesOnly\": false,\n  \"tunnelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-a3cf9b7b-5ab9-4339-b62c-76bd1f9a34f9"
+            },
+            {
+              "id": "a21d3cf5-53ff-4804-abcf-64a80bb9c8e9",
+              "name": "Authentication credentials missing or invalid.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceDescriptorName\": \"<string>\",\n  \"osVersion\": \"<string>\",\n  \"privateDevicesOnly\": false,\n  \"tunnelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:51:25.000Z",
+              "updatedAt": "2026-07-28T02:51:25.000Z",
+              "uid": "35240-a21d3cf5-53ff-4804-abcf-64a80bb9c8e9"
+            }
+          ],
+          "createdAt": "2026-07-28T02:51:25.000Z",
+          "updatedAt": "2026-07-28T02:51:25.000Z",
+          "uid": "35240-d8b47f47-8d4a-405d-83f3-755e888bd7fa"
+        }
+      ],
+      "id": "488af9a2-3fe8-4333-9e42-a622856d8d0a",
+      "createdAt": "2026-07-28T02:51:25.000Z",
+      "updatedAt": "2026-07-28T02:51:25.000Z",
+      "uid": "35240-488af9a2-3fe8-4333-9e42-a622856d8d0a"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.us-west-1.saucelabs.com"
+    }
+  ]
+}

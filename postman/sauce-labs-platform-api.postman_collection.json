@@ -1,0 +1,249 @@
+{
+  "info": {
+    "_postman_id": "69a7f7e9-d39b-416a-bf75-a50b268fdde4",
+    "name": "Sauce Labs Jobs Devices Platform API",
+    "description": "Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.\n\nContact Support:\n Name: Sauce Labs Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:24.000Z",
+    "updatedAt": "2026-07-28T02:51:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-69a7f7e9-d39b-416a-bf75-a50b268fdde4"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "info",
+          "item": [
+            {
+              "name": "status",
+              "item": [
+                {
+                  "name": "Get Platform Status",
+                  "id": "27a95565-5332-4480-9260-6a78fc7e8471",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/info/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "info",
+                        "status"
+                      ]
+                    },
+                    "description": "Returns the current operational status of the Sauce Labs platform."
+                  },
+                  "response": [
+                    {
+                      "id": "600f4025-b135-4455-bd89-fdd70466875a",
+                      "name": "Platform status information.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/info/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "info",
+                            "status"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"wait_time\": \"<number>\",\n  \"service_operational\": \"<boolean>\",\n  \"status_message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:51:24.000Z",
+                      "updatedAt": "2026-07-28T02:51:24.000Z",
+                      "uid": "35240-600f4025-b135-4455-bd89-fdd70466875a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:51:24.000Z",
+                  "updatedAt": "2026-07-28T02:51:24.000Z",
+                  "uid": "35240-27a95565-5332-4480-9260-6a78fc7e8471"
+                }
+              ],
+              "id": "0ec8f20b-0d8a-4e37-91f5-f82a83df62cd",
+              "createdAt": "2026-07-28T02:51:24.000Z",
+              "updatedAt": "2026-07-28T02:51:24.000Z",
+              "uid": "35240-0ec8f20b-0d8a-4e37-91f5-f82a83df62cd"
+            },
+            {
+              "name": "platforms",
+              "item": [
+                {
+                  "name": "{platform}",
+                  "item": [
+                    {
+                      "name": "Get Supported Platforms",
+                      "id": "fbc82769-9e54-4657-a71e-0614b6ea0a39",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/info/platforms/:platform",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "info",
+                            "platforms",
+                            ":platform"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f27cd9eb-b516-48f7-981e-82b0f6218d1f",
+                              "key": "platform",
+                              "value": "webdriver",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns a list of supported OS/browser combinations for the given platform."
+                      },
+                      "response": [
+                        {
+                          "id": "52564f48-73d7-4d32-ad01-5a7480f0f35d",
+                          "name": "List of supported platforms.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/info/platforms/:platform",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "info",
+                                "platforms",
+                                ":platform"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "platform"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"api_name\": \"<string>\",\n    \"long_name\": \"<string>\",\n    \"short_version\": \"<string>\",\n    \"long_version\": \"<string>\",\n    \"os\": \"<string>\",\n    \"latest_stable_version\": \"<string>\",\n    \"automation_backend\": \"<string>\",\n    \"device\": \"<string>\"\n  },\n  {\n    \"api_name\": \"<string>\",\n    \"long_name\": \"<string>\",\n    \"short_version\": \"<string>\",\n    \"long_version\": \"<string>\",\n    \"os\": \"<string>\",\n    \"latest_stable_version\": \"<string>\",\n    \"automation_backend\": \"<string>\",\n    \"device\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T02:51:24.000Z",
+                          "updatedAt": "2026-07-28T02:51:24.000Z",
+                          "uid": "35240-52564f48-73d7-4d32-ad01-5a7480f0f35d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:24.000Z",
+                      "updatedAt": "2026-07-28T02:51:24.000Z",
+                      "uid": "35240-fbc82769-9e54-4657-a71e-0614b6ea0a39"
+                    }
+                  ],
+                  "id": "4f78d45f-a756-4dfc-a31e-bc3c74b07357",
+                  "createdAt": "2026-07-28T02:51:24.000Z",
+                  "updatedAt": "2026-07-28T02:51:24.000Z",
+                  "uid": "35240-4f78d45f-a756-4dfc-a31e-bc3c74b07357"
+                }
+              ],
+              "id": "8c9b0e6d-63a3-43c3-833e-bb7b43c9d45e",
+              "createdAt": "2026-07-28T02:51:24.000Z",
+              "updatedAt": "2026-07-28T02:51:24.000Z",
+              "uid": "35240-8c9b0e6d-63a3-43c3-833e-bb7b43c9d45e"
+            }
+          ],
+          "id": "752028de-9a09-47ee-b7dd-b63ec8f61e9a",
+          "createdAt": "2026-07-28T02:51:24.000Z",
+          "updatedAt": "2026-07-28T02:51:24.000Z",
+          "uid": "35240-752028de-9a09-47ee-b7dd-b63ec8f61e9a"
+        }
+      ],
+      "id": "5e401725-a9d6-4668-abcb-ee6d60bb5337",
+      "createdAt": "2026-07-28T02:51:24.000Z",
+      "updatedAt": "2026-07-28T02:51:24.000Z",
+      "uid": "35240-5e401725-a9d6-4668-abcb-ee6d60bb5337"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.us-west-1.saucelabs.com"
+    }
+  ]
+}

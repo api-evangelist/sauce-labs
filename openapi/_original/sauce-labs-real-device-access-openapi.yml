@@ -1,0 +1,446 @@
+openapi: 3.0.0
+info:
+  title: Sauce Labs Real Device Access API
+  description: >-
+    The Real Device Access API provides programmatic access to Sauce Labs real
+    device sessions, enabling creation, management, and termination of remote
+    device sessions for live and automated testing workflows. It exposes device
+    inventory, availability status, and session lifecycle management.
+  version: '2.0'
+  contact:
+    name: Sauce Labs Support
+    url: https://support.saucelabs.com
+  termsOfService: https://saucelabs.com/terms-of-service
+  license:
+    name: Proprietary
+    url: https://saucelabs.com/terms-of-service
+externalDocs:
+  description: Sauce Labs Real Device API Documentation
+  url: https://docs.saucelabs.com/dev/api/rdc/
+servers:
+  - url: https://api.us-west-1.saucelabs.com/rdc/v2
+    description: US West
+  - url: https://api.eu-central-1.saucelabs.com/rdc/v2
+    description: EU Central
+security:
+  - basicAuth: []
+paths:
+  /devices:
+    get:
+      operationId: listDevices
+      summary: List Available Devices
+      description: Returns the list of real devices available in the Sauce Labs cloud.
+      tags:
+        - Devices
+      parameters:
+        - name: organization_id
+          in: query
+          schema:
+            type: string
+          description: Filter devices by organization.
+        - name: os
+          in: query
+          schema:
+            type: string
+            enum: [ANDROID, IOS]
+          description: Filter by operating system.
+      responses:
+        '200':
+          description: List of devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entities:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+                  metaData:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /devices/status:
+    get:
+      operationId: getDevicesStatus
+      summary: Get Device Availability Status
+      description: Returns availability status for all devices in the cloud.
+      tags:
+        - Devices
+      responses:
+        '200':
+          description: Device status map.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/DeviceStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sessions:
+    get:
+      operationId: listSessions
+      summary: List Active Sessions
+      description: Returns all active real device sessions for the authenticated user.
+      tags:
+        - Sessions
+      responses:
+        '200':
+          description: List of active sessions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entities:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Session'
+                  metaData:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSession
+      summary: Create a Device Session
+      description: >-
+        Allocates a real device and creates a new session. The device can be
+        specified by ID or by descriptor criteria.
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionCreation'
+      responses:
+        '200':
+          description: Session created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sessions/{sessionId}:
+    get:
+      operationId: getSession
+      summary: Get Session Details
+      description: Returns full details for a specific real device session.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: closeSession
+      summary: Close a Session
+      description: Terminates a real device session and releases the device.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session closed successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /sessions/{sessionId}/device/executeShellCommand:
+    post:
+      operationId: executeShellCommand
+      summary: Execute Shell Command on Device
+      description: Runs a shell command on the device attached to the session.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command:
+                  type: string
+                  description: Shell command to execute.
+      responses:
+        '200':
+          description: Command executed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sessions/{sessionId}/device/installApp:
+    post:
+      operationId: installApp
+      summary: Install App on Device
+      description: Installs an application on the device in the current session.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [appUrl]
+              properties:
+                appUrl:
+                  type: string
+                  format: uri
+                  description: URL or storage reference to the app to install.
+      responses:
+        '200':
+          description: App installed.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sessions/{sessionId}/device/uninstallApp:
+    delete:
+      operationId: uninstallApp
+      summary: Uninstall App from Device
+      description: Removes an app from the device in the current session.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [bundleId]
+              properties:
+                bundleId:
+                  type: string
+                  description: Bundle identifier of the app to remove.
+      responses:
+        '200':
+          description: App uninstalled.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Sauce Labs username and access key.
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+  schemas:
+    DeviceDescriptor:
+      type: object
+      description: Hardware characteristics that identify a device model.
+      properties:
+        name:
+          type: string
+          description: Device model name (e.g., "iPhone 14").
+        os:
+          type: string
+          enum: [ANDROID, IOS]
+          description: Operating system.
+        osVersion:
+          type: string
+          description: OS version string.
+        cpuType:
+          type: string
+          description: CPU architecture.
+        cpuCores:
+          type: integer
+          description: Number of CPU cores.
+        ramSize:
+          type: integer
+          description: RAM size in MB.
+        screenSize:
+          type: string
+          description: Screen dimensions (e.g., "6.1 inches").
+        resolutionWidth:
+          type: integer
+        resolutionHeight:
+          type: integer
+        formFactor:
+          type: string
+          enum: [PHONE, TABLET]
+    DeviceStatus:
+      type: object
+      description: Current availability state for a device.
+      properties:
+        deviceId:
+          type: string
+        status:
+          type: string
+          enum: [AVAILABLE, IN_USE, OFFLINE, MAINTENANCE]
+        sessionId:
+          type: string
+          nullable: true
+          description: Current session ID if in use.
+    Device:
+      type: object
+      description: A real physical device available in the Sauce Labs cloud.
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/DeviceDescriptor'
+        isPrivateDevice:
+          type: boolean
+          description: Whether the device is exclusively available to your organization.
+        state:
+          type: string
+          enum: [AVAILABLE, IN_USE, OFFLINE, MAINTENANCE]
+          description: Current state of the device.
+        inUseBy:
+          type: string
+          nullable: true
+          description: Username currently using the device, if in use.
+    SessionId:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique session identifier.
+    Session:
+      type: object
+      description: A real device session on Sauce Labs.
+      properties:
+        id:
+          type: string
+          description: Unique session ID.
+        state:
+          type: string
+          enum: [CREATED, BOOTING, RUNNING, CLOSING, CLOSED, TIMED_OUT, ERROR]
+          description: Current lifecycle state of the session.
+        expiresAt:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp when the session expires.
+        retainUntil:
+          type: string
+          format: date-time
+          nullable: true
+          description: ISO 8601 timestamp until the session is retained.
+        device:
+          $ref: '#/components/schemas/Device'
+        appium:
+          $ref: '#/components/schemas/AppiumSession'
+        links:
+          type: object
+          description: HATEOAS links for session actions.
+          additionalProperties:
+            type: string
+    AppiumSession:
+      type: object
+      description: Appium-specific session metadata.
+      properties:
+        sessionId:
+          type: string
+        serverUrl:
+          type: string
+          format: uri
+    AppiumVersion:
+      type: object
+      properties:
+        version:
+          type: string
+    SessionCreation:
+      type: object
+      description: Request body for creating a new real device session.
+      required: [deviceDescriptorName]
+      properties:
+        deviceDescriptorName:
+          type: string
+          description: Device model name to allocate.
+        osVersion:
+          type: string
+          description: Minimum OS version required.
+        privateDevicesOnly:
+          type: boolean
+          default: false
+          description: Only allocate private devices.
+        tunnelId:
+          type: string
+          nullable: true
+          description: Sauce Connect tunnel ID for private network access.
+    PaginationMeta:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string

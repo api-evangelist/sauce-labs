@@ -1,0 +1,1125 @@
+{
+  "info": {
+    "_postman_id": "a4e00063-b9e7-491b-971d-045aad7d51e6",
+    "name": "Sauce Labs Devices Jobs API",
+    "description": "Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.\n\nContact Support:\n Name: Sauce Labs Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:23.000Z",
+    "updatedAt": "2026-07-28T02:51:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a4e00063-b9e7-491b-971d-045aad7d51e6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "{username}",
+          "item": [
+            {
+              "name": "jobs",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "stop",
+                      "item": [
+                        {
+                          "name": "Stop a Running Job",
+                          "id": "25432791-14a5-4d4e-a90e-2382ad33b776",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c0070cd9-f6ae-4c44-95a3-e2d8aea659fc",
+                                  "key": "username",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "5579685e-fb31-4824-b0c0-e6952f593aec",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Terminates a running or queued job immediately."
+                          },
+                          "response": [
+                            {
+                              "id": "7cb1323b-ee7b-40a5-afce-b7fe64428087",
+                              "name": "Job stopped successfully.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/:username/jobs/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    ":username",
+                                    "jobs",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "username"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"error\",\n  \"passed\": \"<boolean>\",\n  \"owner\": \"<string>\",\n  \"build\": \"<string>\",\n  \"browser\": \"<string>\",\n  \"browser_version\": \"<string>\",\n  \"browser_short_version\": \"<string>\",\n  \"os\": \"<string>\",\n  \"automation_backend\": \"<string>\",\n  \"creation_time\": \"<integer>\",\n  \"start_time\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"modification_time\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"public\": \"<string>\",\n  \"video_url\": \"<uri>\",\n  \"log_url\": \"<uri>\",\n  \"commands_not_successful\": \"<integer>\",\n  \"consolidated_status\": \"<string>\",\n  \"assigned_tunnel_id\": \"<string>\",\n  \"proxied\": \"<boolean>\",\n  \"record_screenshots\": \"<boolean>\",\n  \"record_video\": \"<boolean>\",\n  \"selenium_version\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:51:23.000Z",
+                              "updatedAt": "2026-07-28T02:51:23.000Z",
+                              "uid": "35240-7cb1323b-ee7b-40a5-afce-b7fe64428087"
+                            },
+                            {
+                              "id": "40fac1fe-79a9-44b2-a9d5-eec47451ca8e",
+                              "name": "Authentication credentials are missing or invalid.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/:username/jobs/:id/stop",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    ":username",
+                                    "jobs",
+                                    ":id",
+                                    "stop"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "username"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:51:23.000Z",
+                              "updatedAt": "2026-07-28T02:51:23.000Z",
+                              "uid": "35240-40fac1fe-79a9-44b2-a9d5-eec47451ca8e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-25432791-14a5-4d4e-a90e-2382ad33b776"
+                        }
+                      ],
+                      "id": "904a08f1-b5f3-42d1-b158-52aa259706ad",
+                      "createdAt": "2026-07-28T02:51:23.000Z",
+                      "updatedAt": "2026-07-28T02:51:23.000Z",
+                      "uid": "35240-904a08f1-b5f3-42d1-b158-52aa259706ad"
+                    },
+                    {
+                      "name": "Get a Job",
+                      "id": "c37d2a21-5256-4499-9d66-ac3a2e29cf6b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            ":username",
+                            "jobs",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2be30aaf-c782-4b15-9d39-cd5c761d05bc",
+                              "key": "username",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "deac0c5a-8796-4d64-9817-609fd620aa9f",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The job ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns full details for a specific job by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "5d8dfe8e-8f2d-4707-913f-717e06a57999",
+                          "name": "Job details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"error\",\n  \"passed\": \"<boolean>\",\n  \"owner\": \"<string>\",\n  \"build\": \"<string>\",\n  \"browser\": \"<string>\",\n  \"browser_version\": \"<string>\",\n  \"browser_short_version\": \"<string>\",\n  \"os\": \"<string>\",\n  \"automation_backend\": \"<string>\",\n  \"creation_time\": \"<integer>\",\n  \"start_time\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"modification_time\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"public\": \"<string>\",\n  \"video_url\": \"<uri>\",\n  \"log_url\": \"<uri>\",\n  \"commands_not_successful\": \"<integer>\",\n  \"consolidated_status\": \"<string>\",\n  \"assigned_tunnel_id\": \"<string>\",\n  \"proxied\": \"<boolean>\",\n  \"record_screenshots\": \"<boolean>\",\n  \"record_video\": \"<boolean>\",\n  \"selenium_version\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-5d8dfe8e-8f2d-4707-913f-717e06a57999"
+                        },
+                        {
+                          "id": "13a7b7d0-c32c-4243-98f7-c06661019785",
+                          "name": "Authentication credentials are missing or invalid.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-13a7b7d0-c32c-4243-98f7-c06661019785"
+                        },
+                        {
+                          "id": "da5d0328-9f06-451b-9a1e-4b98e189a581",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-da5d0328-9f06-451b-9a1e-4b98e189a581"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:23.000Z",
+                      "updatedAt": "2026-07-28T02:51:23.000Z",
+                      "uid": "35240-c37d2a21-5256-4499-9d66-ac3a2e29cf6b"
+                    },
+                    {
+                      "name": "Update a Job",
+                      "id": "3e0875fb-84ff-4680-9eda-5974cce3994c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"passed\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"build\": \"<string>\",\n  \"public\": \"team\",\n  \"custom-data\": {\n    \"Excepteur_90b\": 19892291,\n    \"Excepteur_5\": 74141371.54428616,\n    \"sede\": true\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            ":username",
+                            "jobs",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b30faf0b-73e6-4c1c-8f0a-3f962f18b9e2",
+                              "key": "username",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "0839554f-67fe-4798-967b-e44c39ca6c96",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update attributes of an existing job such as name, tags, or pass/fail status."
+                      },
+                      "response": [
+                        {
+                          "id": "28b0ca56-233e-4aef-a78b-64de696dab31",
+                          "name": "Updated job details.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"passed\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"build\": \"<string>\",\n  \"public\": \"team\",\n  \"custom-data\": {\n    \"Excepteur_90b\": 19892291,\n    \"Excepteur_5\": 74141371.54428616,\n    \"sede\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"error\",\n  \"passed\": \"<boolean>\",\n  \"owner\": \"<string>\",\n  \"build\": \"<string>\",\n  \"browser\": \"<string>\",\n  \"browser_version\": \"<string>\",\n  \"browser_short_version\": \"<string>\",\n  \"os\": \"<string>\",\n  \"automation_backend\": \"<string>\",\n  \"creation_time\": \"<integer>\",\n  \"start_time\": \"<integer>\",\n  \"end_time\": \"<integer>\",\n  \"modification_time\": \"<integer>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"public\": \"<string>\",\n  \"video_url\": \"<uri>\",\n  \"log_url\": \"<uri>\",\n  \"commands_not_successful\": \"<integer>\",\n  \"consolidated_status\": \"<string>\",\n  \"assigned_tunnel_id\": \"<string>\",\n  \"proxied\": \"<boolean>\",\n  \"record_screenshots\": \"<boolean>\",\n  \"record_video\": \"<boolean>\",\n  \"selenium_version\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-28b0ca56-233e-4aef-a78b-64de696dab31"
+                        },
+                        {
+                          "id": "78711302-d319-40fe-a34c-cc97648cf1a7",
+                          "name": "Authentication credentials are missing or invalid.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"passed\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"build\": \"<string>\",\n  \"public\": \"team\",\n  \"custom-data\": {\n    \"Excepteur_90b\": 19892291,\n    \"Excepteur_5\": 74141371.54428616,\n    \"sede\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-78711302-d319-40fe-a34c-cc97648cf1a7"
+                        },
+                        {
+                          "id": "6128129a-e711-4ff5-aaa5-475aa5508cc0",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"passed\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"build\": \"<string>\",\n  \"public\": \"team\",\n  \"custom-data\": {\n    \"Excepteur_90b\": 19892291,\n    \"Excepteur_5\": 74141371.54428616,\n    \"sede\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-6128129a-e711-4ff5-aaa5-475aa5508cc0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:23.000Z",
+                      "updatedAt": "2026-07-28T02:51:23.000Z",
+                      "uid": "35240-3e0875fb-84ff-4680-9eda-5974cce3994c"
+                    },
+                    {
+                      "name": "Delete a Job",
+                      "id": "5150fc26-765d-40f8-8b75-0f1e1fc50872",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            ":username",
+                            "jobs",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1b203f6d-652f-48e1-8559-c3f198fa0410",
+                              "key": "username",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "767f3c73-d17b-4b69-9975-eb59752773b6",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Permanently deletes a job and all associated assets."
+                      },
+                      "response": [
+                        {
+                          "id": "88049291-30cd-4f5e-8d94-0c791b91087d",
+                          "name": "Job successfully deleted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-88049291-30cd-4f5e-8d94-0c791b91087d"
+                        },
+                        {
+                          "id": "f495cc15-ac15-44df-807a-b73dc6cded45",
+                          "name": "Authentication credentials are missing or invalid.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-f495cc15-ac15-44df-807a-b73dc6cded45"
+                        },
+                        {
+                          "id": "bc032be4-16a8-4510-b356-20aad3b10cd6",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/:username/jobs/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                ":username",
+                                "jobs",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                },
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:23.000Z",
+                          "updatedAt": "2026-07-28T02:51:23.000Z",
+                          "uid": "35240-bc032be4-16a8-4510-b356-20aad3b10cd6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:23.000Z",
+                      "updatedAt": "2026-07-28T02:51:23.000Z",
+                      "uid": "35240-5150fc26-765d-40f8-8b75-0f1e1fc50872"
+                    }
+                  ],
+                  "id": "c0c40cad-7e04-4369-925b-0863a84f4dca",
+                  "createdAt": "2026-07-28T02:51:23.000Z",
+                  "updatedAt": "2026-07-28T02:51:23.000Z",
+                  "uid": "35240-c0c40cad-7e04-4369-925b-0863a84f4dca"
+                },
+                {
+                  "name": "List Jobs for a User",
+                  "id": "5c06d839-c20b-42da-b561-47c8895246fa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/:username/jobs?limit=20&skip=0&from=<integer>&to=<integer>&status=in progress",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        ":username",
+                        "jobs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of jobs to return.",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Number of jobs to skip (for pagination).",
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Unix timestamp; return jobs created after this time.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Unix timestamp; return jobs created before this time.",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by job status.",
+                          "key": "status",
+                          "value": "in progress"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "257dc5a6-cd41-4702-b90b-26309d1a2749",
+                          "key": "username",
+                          "value": "<string>",
+                          "description": "(Required) The Sauce Labs username."
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of test jobs for the specified user."
+                  },
+                  "response": [
+                    {
+                      "id": "50e76af2-8d8d-4313-acc5-daf5554f3158",
+                      "name": "A list of job summaries.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/:username/jobs?limit=20&skip=0&from=<integer>&to=<integer>&status=in progress",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            ":username",
+                            "jobs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of jobs to return.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Number of jobs to skip (for pagination).",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Unix timestamp; return jobs created after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp; return jobs created before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter by job status.",
+                              "key": "status",
+                              "value": "in progress"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "username"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"status\": \"error\",\n    \"passed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"build\": \"<string>\",\n    \"creation_time\": \"<integer>\",\n    \"start_time\": \"<integer>\",\n    \"end_time\": \"<integer>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"status\": \"error\",\n    \"passed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"build\": \"<string>\",\n    \"creation_time\": \"<integer>\",\n    \"start_time\": \"<integer>\",\n    \"end_time\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:51:23.000Z",
+                      "updatedAt": "2026-07-28T02:51:23.000Z",
+                      "uid": "35240-50e76af2-8d8d-4313-acc5-daf5554f3158"
+                    },
+                    {
+                      "id": "44a00752-92b4-4a91-a9a1-20bc2dbdfdd9",
+                      "name": "Authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/:username/jobs?limit=20&skip=0&from=<integer>&to=<integer>&status=in progress",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            ":username",
+                            "jobs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of jobs to return.",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Number of jobs to skip (for pagination).",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Unix timestamp; return jobs created after this time.",
+                              "key": "from",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Unix timestamp; return jobs created before this time.",
+                              "key": "to",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter by job status.",
+                              "key": "status",
+                              "value": "in progress"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "username"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:51:23.000Z",
+                      "updatedAt": "2026-07-28T02:51:23.000Z",
+                      "uid": "35240-44a00752-92b4-4a91-a9a1-20bc2dbdfdd9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:51:23.000Z",
+                  "updatedAt": "2026-07-28T02:51:23.000Z",
+                  "uid": "35240-5c06d839-c20b-42da-b561-47c8895246fa"
+                }
+              ],
+              "id": "f236d4a4-81ce-441f-8af9-3e0e9ca01c71",
+              "createdAt": "2026-07-28T02:51:23.000Z",
+              "updatedAt": "2026-07-28T02:51:23.000Z",
+              "uid": "35240-f236d4a4-81ce-441f-8af9-3e0e9ca01c71"
+            }
+          ],
+          "id": "d8286e04-1d4e-4903-8c5f-9460e8154d7e",
+          "createdAt": "2026-07-28T02:51:23.000Z",
+          "updatedAt": "2026-07-28T02:51:23.000Z",
+          "uid": "35240-d8286e04-1d4e-4903-8c5f-9460e8154d7e"
+        }
+      ],
+      "id": "8292ef60-5652-4328-a32d-f956c0322012",
+      "createdAt": "2026-07-28T02:51:23.000Z",
+      "updatedAt": "2026-07-28T02:51:23.000Z",
+      "uid": "35240-8292ef60-5652-4328-a32d-f956c0322012"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.us-west-1.saucelabs.com"
+    }
+  ]
+}

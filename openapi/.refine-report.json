@@ -1,0 +1,24 @@
+{
+  "provider": "sauce-labs",
+  "sources": [
+    "sauce-labs-devices-api-openapi.yml",
+    "sauce-labs-job-assets-api-openapi.yml",
+    "sauce-labs-jobs-api-openapi.yml",
+    "sauce-labs-platform-api-openapi.yml",
+    "sauce-labs-sessions-api-openapi.yml",
+    "sauce-labs-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "sauce-labs-devices-api-openapi.yml",
+    "sauce-labs-job-assets-api-openapi.yml",
+    "sauce-labs-jobs-api-openapi.yml",
+    "sauce-labs-platform-api-openapi.yml",
+    "sauce-labs-sessions-api-openapi.yml",
+    "sauce-labs-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

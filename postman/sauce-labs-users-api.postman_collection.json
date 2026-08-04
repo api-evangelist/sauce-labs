@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "e892dab8-bb9b-40bd-ad9f-9e246ee20d8a",
+    "name": "Sauce Labs Jobs Devices Users API",
+    "description": "Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.\n\nContact Support:\n Name: Sauce Labs Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:51:26.000Z",
+    "updatedAt": "2026-07-28T02:51:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e892dab8-bb9b-40bd-ad9f-9e246ee20d8a"
+  },
+  "item": [
+    {
+      "name": "v1.2",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "{username}",
+              "item": [
+                {
+                  "name": "concurrency",
+                  "item": [
+                    {
+                      "name": "Get User Concurrency",
+                      "id": "cfa6f8c3-53b6-464f-a266-4c3624bbf437",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1.2/users/:username/concurrency",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1.2",
+                            "users",
+                            ":username",
+                            "concurrency"
+                          ],
+                          "variable": [
+                            {
+                              "id": "afbaae48-c4bc-4a4d-82cb-ccc493484534",
+                              "key": "username",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns the current and maximum concurrency limits for the user."
+                      },
+                      "response": [
+                        {
+                          "id": "469fe207-60ae-45f7-abdb-261d128e09ab",
+                          "name": "Concurrency information.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1.2/users/:username/concurrency",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1.2",
+                                "users",
+                                ":username",
+                                "concurrency"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"timestamp\": \"<number>\",\n  \"concurrency\": {\n    \"self\": {\n      \"allowed\": {\n        \"overall\": \"<integer>\",\n        \"mac\": \"<integer>\",\n        \"manual\": \"<integer>\"\n      },\n      \"current\": {\n        \"overall\": \"<integer>\",\n        \"mac\": \"<integer>\",\n        \"manual\": \"<integer>\"\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:51:26.000Z",
+                          "updatedAt": "2026-07-28T02:51:26.000Z",
+                          "uid": "35240-469fe207-60ae-45f7-abdb-261d128e09ab"
+                        },
+                        {
+                          "id": "9080b7f5-1cc9-4fdb-9372-1b81d93f8aa2",
+                          "name": "Authentication credentials are missing or invalid.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1.2/users/:username/concurrency",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1.2",
+                                "users",
+                                ":username",
+                                "concurrency"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "username"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:51:26.000Z",
+                          "updatedAt": "2026-07-28T02:51:26.000Z",
+                          "uid": "35240-9080b7f5-1cc9-4fdb-9372-1b81d93f8aa2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:51:26.000Z",
+                      "updatedAt": "2026-07-28T02:51:26.000Z",
+                      "uid": "35240-cfa6f8c3-53b6-464f-a266-4c3624bbf437"
+                    }
+                  ],
+                  "id": "b1d4d502-1364-47a5-9f93-4597a9ac11ee",
+                  "createdAt": "2026-07-28T02:51:26.000Z",
+                  "updatedAt": "2026-07-28T02:51:26.000Z",
+                  "uid": "35240-b1d4d502-1364-47a5-9f93-4597a9ac11ee"
+                }
+              ],
+              "id": "c7572313-4ef4-4a03-8995-8f3813c0fc6c",
+              "createdAt": "2026-07-28T02:51:26.000Z",
+              "updatedAt": "2026-07-28T02:51:26.000Z",
+              "uid": "35240-c7572313-4ef4-4a03-8995-8f3813c0fc6c"
+            }
+          ],
+          "id": "69dedcb9-24fe-4449-aa46-340d3fd1aacb",
+          "createdAt": "2026-07-28T02:51:26.000Z",
+          "updatedAt": "2026-07-28T02:51:26.000Z",
+          "uid": "35240-69dedcb9-24fe-4449-aa46-340d3fd1aacb"
+        }
+      ],
+      "id": "0ca51ab6-5366-4133-9fdf-c580700b6e58",
+      "createdAt": "2026-07-28T02:51:26.000Z",
+      "updatedAt": "2026-07-28T02:51:26.000Z",
+      "uid": "35240-0ca51ab6-5366-4133-9fdf-c580700b6e58"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.us-west-1.saucelabs.com"
+    }
+  ]
+}
