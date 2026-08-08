@@ -204,7 +204,7 @@ common:
     url: https://status.saucelabs.com/
   - type: ChangeLog
     url: https://changelog.saucelabs.com/en
-  - type: MCP
+  - type: Documentation
     url: https://github.com/saucelabs/sauce-api-mcp
   - type: SDKs
     url: https://github.com/saucelabs/node-saucelabs
