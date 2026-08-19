@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sauce Labs Jobs Devices Sessions API",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Active Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/sessions"
+          },
+          "docs": "Returns all active real device sessions for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create a Device Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.us-west-1.saucelabs.com/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Allocates a real device and creates a new session. The device can be specified by ID or by descriptor criteria."
+        },
+        {
+          "info": {
+            "name": "Get Session Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns full details for a specific real device session."
+        },
+        {
+          "info": {
+            "name": "Close a Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.us-west-1.saucelabs.com/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Terminates a real device session and releases the device."
+        },
+        {
+          "info": {
+            "name": "Execute Shell Command on Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.us-west-1.saucelabs.com/sessions/:sessionId/device/executeShellCommand",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs a shell command on the device attached to the session."
+        },
+        {
+          "info": {
+            "name": "Install App on Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.us-west-1.saucelabs.com/sessions/:sessionId/device/installApp",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Installs an application on the device in the current session."
+        },
+        {
+          "info": {
+            "name": "Uninstall App from Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.us-west-1.saucelabs.com/sessions/:sessionId/device/uninstallApp",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes an app from the device in the current session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

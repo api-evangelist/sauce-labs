@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sauce Labs Devices Jobs API",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Jobs for a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/v1/:username/jobs",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The Sauce Labs username."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of jobs to return."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of jobs to skip (for pagination)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp; return jobs created after this time."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp; return jobs created before this time."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job status."
+              }
+            ]
+          },
+          "docs": "Returns a list of test jobs for the specified user."
+        },
+        {
+          "info": {
+            "name": "Get a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/v1/:username/jobs/:id",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The job ID."
+              }
+            ]
+          },
+          "docs": "Returns full details for a specific job by ID."
+        },
+        {
+          "info": {
+            "name": "Update a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.us-west-1.saucelabs.com/v1/:username/jobs/:id",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update attributes of an existing job such as name, tags, or pass/fail status."
+        },
+        {
+          "info": {
+            "name": "Delete a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.us-west-1.saucelabs.com/v1/:username/jobs/:id",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Permanently deletes a job and all associated assets."
+        },
+        {
+          "info": {
+            "name": "Stop a Running Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.us-west-1.saucelabs.com/v1/:username/jobs/:id/stop",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Terminates a running or queued job immediately."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

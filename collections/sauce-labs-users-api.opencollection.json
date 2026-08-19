@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sauce Labs Jobs Devices Users API",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User Concurrency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/v1.2/users/:username/concurrency",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the current and maximum concurrency limits for the user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

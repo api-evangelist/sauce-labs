@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sauce Labs Jobs Devices Platform API",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Platform Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/v1/info/status"
+          },
+          "docs": "Returns the current operational status of the Sauce Labs platform."
+        },
+        {
+          "info": {
+            "name": "Get Supported Platforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.us-west-1.saucelabs.com/v1/info/platforms/:platform",
+            "params": [
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of supported OS/browser combinations for the given platform."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
