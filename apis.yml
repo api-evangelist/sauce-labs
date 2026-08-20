@@ -119,6 +119,8 @@ apis:
   humanURL: https://docs.saucelabs.com/dev/api/jobs/
   baseURL: https://api.us-west-1.saucelabs.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -167,6 +169,8 @@ apis:
   humanURL: https://docs.saucelabs.com/dev/api/jobs/
   baseURL: https://api.us-west-1.saucelabs.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
