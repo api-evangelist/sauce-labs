@@ -11,6 +11,18 @@ description: >-
   Sauce Labs also offers API testing, contract testing, error reporting,
   and an MCP server for AI agent integrations.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
