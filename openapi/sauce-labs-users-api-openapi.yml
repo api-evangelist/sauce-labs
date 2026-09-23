@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Sauce Labs Jobs Devices Users API
+  title: Sauce Labs Jobs Users API
   description: Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.
   version: '1.1'
   contact:

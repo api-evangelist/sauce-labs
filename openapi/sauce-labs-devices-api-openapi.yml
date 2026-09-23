@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Sauce Labs Jobs Devices API
-  description: Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.
-  version: '1.1'
+  title: Sauce Labs Real Device Access Devices API
+  description: The Real Device Access API provides programmatic access to Sauce Labs real device sessions, enabling creation, management, and termination of remote device sessions for live and automated testing workflows. It exposes device inventory, availability status, and session lifecycle management.
+  version: '2.0'
   contact:
     name: Sauce Labs Support
     url: https://support.saucelabs.com
@@ -11,9 +11,9 @@ info:
     name: Proprietary
     url: https://saucelabs.com/terms-of-service
 servers:
-- url: https://api.us-west-1.saucelabs.com
-  description: US West (primary)
-- url: https://api.eu-central-1.saucelabs.com
+- url: https://api.us-west-1.saucelabs.com/rdc/v2
+  description: US West
+- url: https://api.eu-central-1.saucelabs.com/rdc/v2
   description: EU Central
 security:
 - basicAuth: []
@@ -114,23 +114,26 @@ components:
           enum:
           - PHONE
           - TABLET
-    DeviceStatus:
+    ErrorBody:
       type: object
-      description: Current availability state for a device.
       properties:
-        deviceId:
+        code:
           type: string
-        status:
+        message:
           type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-        sessionId:
-          type: string
-          nullable: true
-          description: Current session ID if in use.
+        details:
+          type: array
+          items:
+            type: string
+    PaginationMeta:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
     Device:
       type: object
       description: A real physical device available in the Sauce Labs cloud.
@@ -149,29 +152,28 @@ components:
           - MAINTENANCE
           description: Current state of the device.
         inUseBy:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Username currently using the device, if in use.
-    PaginationMeta:
+    DeviceStatus:
       type: object
+      description: Current availability state for a device.
       properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
-    ErrorBody:
-      type: object
-      properties:
-        code:
+        deviceId:
           type: string
-        message:
+        status:
           type: string
-        details:
-          type: array
-          items:
-            type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+        sessionId:
+          type:
+          - string
+          - 'null'
+          description: Current session ID if in use.
   responses:
     Unauthorized:
       description: Authentication credentials missing or invalid.
@@ -183,7 +185,7 @@ components:
     basicAuth:
       type: http
       scheme: basic
-      description: Use your Sauce Labs username and access key as the HTTP Basic Authentication credentials.
+      description: Sauce Labs username and access key.
 externalDocs:
-  description: Sauce Labs Jobs API Documentation
-  url: https://docs.saucelabs.com/dev/api/jobs/
+  description: Sauce Labs Real Device API Documentation
+  url: https://docs.saucelabs.com/dev/api/rdc/

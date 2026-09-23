@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Sauce Labs Jobs Devices Job Assets API
+  title: Sauce Labs Jobs Job Assets API
   description: Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.
   version: '1.1'
   contact:
@@ -57,19 +57,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -83,6 +70,19 @@ components:
         message:
           type: string
           description: Summary error message.
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

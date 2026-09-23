@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Sauce Labs Devices Jobs API
+  title: Sauce Labs Jobs API
   description: Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.
   version: '1.1'
   contact:
@@ -215,123 +215,37 @@ components:
           - error
           - complete
         passed:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         name:
           type: string
         build:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         creation_time:
           type: integer
         start_time:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         end_time:
-          type: integer
-          nullable: true
-    Job:
+          type:
+          - integer
+          - 'null'
+    Error:
       type: object
-      description: Full details of a Sauce Labs test job.
+      description: Error response envelope.
       properties:
-        id:
-          type: string
-          description: Unique job identifier.
-        name:
-          type: string
-          description: Human-readable job name.
-        status:
-          type: string
-          enum:
-          - new
-          - queued
-          - in progress
-          - passed
-          - failed
-          - error
-          - complete
-          description: Current status of the job.
-        passed:
-          type: boolean
-          nullable: true
-          description: Whether the job was marked as passed.
-        owner:
-          type: string
-          description: Username of the job owner.
-        build:
-          type: string
-          nullable: true
-          description: Build identifier associated with this job.
-        browser:
-          type: string
-          description: Browser used in the job.
-        browser_version:
-          type: string
-          description: Browser version used.
-        browser_short_version:
-          type: string
-          description: Short browser version string.
-        os:
-          type: string
-          description: Operating system used.
-        automation_backend:
-          type: string
-          description: Automation framework (e.g., webdriver, appium).
-        creation_time:
-          type: integer
-          description: Unix timestamp when the job was created.
-        start_time:
-          type: integer
-          nullable: true
-          description: Unix timestamp when the job started running.
-        end_time:
-          type: integer
-          nullable: true
-          description: Unix timestamp when the job ended.
-        modification_time:
-          type: integer
-          description: Unix timestamp of last modification.
-        tags:
+        errors:
           type: array
           items:
             type: string
-          description: User-defined tags for categorizing jobs.
-        public:
+          description: List of error messages.
+        message:
           type: string
-          description: Visibility setting (public, private, team, share).
-        video_url:
-          type: string
-          format: uri
-          nullable: true
-          description: URL to the recorded video of the session.
-        log_url:
-          type: string
-          format: uri
-          nullable: true
-          description: URL to the Selenium log.
-        commands_not_successful:
-          type: integer
-          description: Count of commands that did not succeed.
-        consolidated_status:
-          type: string
-          description: Consolidated pass/fail status string.
-        assigned_tunnel_id:
-          type: string
-          nullable: true
-          description: Sauce Connect tunnel ID used by this job.
-        proxied:
-          type: boolean
-          description: Whether the job was proxied through Sauce Connect.
-        record_screenshots:
-          type: boolean
-          description: Whether screenshots were recorded.
-        record_video:
-          type: boolean
-          description: Whether video was recorded.
-        selenium_version:
-          type: string
-          nullable: true
-          description: Selenium version used.
+          description: Summary error message.
     JobUpdate:
       type: object
       description: Fields that can be updated on an existing job.
@@ -362,27 +276,125 @@ components:
           type: object
           additionalProperties: true
           description: Arbitrary key-value metadata.
-    Error:
+    Job:
       type: object
-      description: Error response envelope.
+      description: Full details of a Sauce Labs test job.
       properties:
-        errors:
+        id:
+          type: string
+          description: Unique job identifier.
+        name:
+          type: string
+          description: Human-readable job name.
+        status:
+          type: string
+          enum:
+          - new
+          - queued
+          - in progress
+          - passed
+          - failed
+          - error
+          - complete
+          description: Current status of the job.
+        passed:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the job was marked as passed.
+        owner:
+          type: string
+          description: Username of the job owner.
+        build:
+          type:
+          - string
+          - 'null'
+          description: Build identifier associated with this job.
+        browser:
+          type: string
+          description: Browser used in the job.
+        browser_version:
+          type: string
+          description: Browser version used.
+        browser_short_version:
+          type: string
+          description: Short browser version string.
+        os:
+          type: string
+          description: Operating system used.
+        automation_backend:
+          type: string
+          description: Automation framework (e.g., webdriver, appium).
+        creation_time:
+          type: integer
+          description: Unix timestamp when the job was created.
+        start_time:
+          type:
+          - integer
+          - 'null'
+          description: Unix timestamp when the job started running.
+        end_time:
+          type:
+          - integer
+          - 'null'
+          description: Unix timestamp when the job ended.
+        modification_time:
+          type: integer
+          description: Unix timestamp of last modification.
+        tags:
           type: array
           items:
             type: string
-          description: List of error messages.
-        message:
+          description: User-defined tags for categorizing jobs.
+        public:
           type: string
-          description: Summary error message.
+          description: Visibility setting (public, private, team, share).
+        video_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL to the recorded video of the session.
+        log_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL to the Selenium log.
+        commands_not_successful:
+          type: integer
+          description: Count of commands that did not succeed.
+        consolidated_status:
+          type: string
+          description: Consolidated pass/fail status string.
+        assigned_tunnel_id:
+          type:
+          - string
+          - 'null'
+          description: Sauce Connect tunnel ID used by this job.
+        proxied:
+          type: boolean
+          description: Whether the job was proxied through Sauce Connect.
+        record_screenshots:
+          type: boolean
+          description: Whether screenshots were recorded.
+        record_video:
+          type: boolean
+          description: Whether video was recorded.
+        selenium_version:
+          type:
+          - string
+          - 'null'
+          description: Selenium version used.
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

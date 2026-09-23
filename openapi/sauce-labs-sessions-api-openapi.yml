@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Sauce Labs Jobs Devices Sessions API
-  description: Manage and retrieve test jobs running on Sauce Labs virtual and real device infrastructure. Supports listing jobs, fetching job assets such as logs, videos, and screenshots, updating job attributes, and stopping or deleting jobs.
-  version: '1.1'
+  title: Sauce Labs Real Device Access Sessions API
+  description: The Real Device Access API provides programmatic access to Sauce Labs real device sessions, enabling creation, management, and termination of remote device sessions for live and automated testing workflows. It exposes device inventory, availability status, and session lifecycle management.
+  version: '2.0'
   contact:
     name: Sauce Labs Support
     url: https://support.saucelabs.com
@@ -11,9 +11,9 @@ info:
     name: Proprietary
     url: https://saucelabs.com/terms-of-service
 servers:
-- url: https://api.us-west-1.saucelabs.com
-  description: US West (primary)
-- url: https://api.eu-central-1.saucelabs.com
+- url: https://api.us-west-1.saucelabs.com/rdc/v2
+  description: US West
+- url: https://api.eu-central-1.saucelabs.com/rdc/v2
   description: EU Central
 security:
 - basicAuth: []
@@ -211,6 +211,27 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    SessionCreation:
+      type: object
+      description: Request body for creating a new real device session.
+      required:
+      - deviceDescriptorName
+      properties:
+        deviceDescriptorName:
+          type: string
+          description: Device model name to allocate.
+        osVersion:
+          type: string
+          description: Minimum OS version required.
+        privateDevicesOnly:
+          type: boolean
+          default: false
+          description: Only allocate private devices.
+        tunnelId:
+          type:
+          - string
+          - 'null'
+          description: Sauce Connect tunnel ID for private network access.
     DeviceDescriptor:
       type: object
       description: Hardware characteristics that identify a device model.
@@ -248,6 +269,17 @@ components:
           enum:
           - PHONE
           - TABLET
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
     Session:
       type: object
       description: A real device session on Sauce Labs.
@@ -271,9 +303,10 @@ components:
           format: date-time
           description: ISO 8601 timestamp when the session expires.
         retainUntil:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: ISO 8601 timestamp until the session is retained.
         device:
           $ref: '#/components/schemas/Device'
@@ -293,26 +326,15 @@ components:
         serverUrl:
           type: string
           format: uri
-    SessionCreation:
+    PaginationMeta:
       type: object
-      description: Request body for creating a new real device session.
-      required:
-      - deviceDescriptorName
       properties:
-        deviceDescriptorName:
-          type: string
-          description: Device model name to allocate.
-        osVersion:
-          type: string
-          description: Minimum OS version required.
-        privateDevicesOnly:
-          type: boolean
-          default: false
-          description: Only allocate private devices.
-        tunnelId:
-          type: string
-          nullable: true
-          description: Sauce Connect tunnel ID for private network access.
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
     Device:
       type: object
       description: A real physical device available in the Sauce Labs cloud.
@@ -331,32 +353,13 @@ components:
           - MAINTENANCE
           description: Current state of the device.
         inUseBy:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Username currently using the device, if in use.
-    PaginationMeta:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
-    ErrorBody:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: string
   responses:
-    NotFound:
-      description: Resource not found.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:
@@ -367,8 +370,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    BadRequest:
-      description: Invalid request parameters.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
@@ -377,7 +380,7 @@ components:
     basicAuth:
       type: http
       scheme: basic
-      description: Use your Sauce Labs username and access key as the HTTP Basic Authentication credentials.
+      description: Sauce Labs username and access key.
 externalDocs:
-  description: Sauce Labs Jobs API Documentation
-  url: https://docs.saucelabs.com/dev/api/jobs/
+  description: Sauce Labs Real Device API Documentation
+  url: https://docs.saucelabs.com/dev/api/rdc/

@@ -1,24 +1,38 @@
 {
   "provider": "sauce-labs",
   "sources": [
-    "sauce-labs-devices-api-openapi.yml",
-    "sauce-labs-job-assets-api-openapi.yml",
-    "sauce-labs-jobs-api-openapi.yml",
-    "sauce-labs-platform-api-openapi.yml",
-    "sauce-labs-sessions-api-openapi.yml",
-    "sauce-labs-users-api-openapi.yml"
+    "_original/sauce-labs-jobs-openapi.yml",
+    "_original/sauce-labs-real-device-access-openapi.yml"
   ],
   "outputs": [
-    "sauce-labs-devices-api-openapi.yml",
     "sauce-labs-job-assets-api-openapi.yml",
     "sauce-labs-jobs-api-openapi.yml",
     "sauce-labs-platform-api-openapi.yml",
-    "sauce-labs-sessions-api-openapi.yml",
-    "sauce-labs-users-api-openapi.yml"
+    "sauce-labs-users-api-openapi.yml",
+    "sauce-labs-devices-api-openapi.yml",
+    "sauce-labs-sessions-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sauce-labs-jobs-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sauce-labs-jobs-openapi.yml: declared missing tag: Job Assets",
+    "sauce-labs-jobs-openapi.yml: declared missing tag: Jobs",
+    "sauce-labs-jobs-openapi.yml: declared missing tag: Platform",
+    "sauce-labs-jobs-openapi.yml: declared missing tag: Users",
+    "sauce-labs-real-device-access-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "sauce-labs-real-device-access-openapi.yml: declared missing tag: Devices",
+    "sauce-labs-real-device-access-openapi.yml: declared missing tag: Sessions",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sauce-labs-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sauce-labs-job-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sauce-labs-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sauce-labs-platform-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sauce-labs-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sauce-labs-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
