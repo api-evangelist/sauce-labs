@@ -211,6 +211,48 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Device:
+      type: object
+      description: A real physical device available in the Sauce Labs cloud.
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/DeviceDescriptor'
+        isPrivateDevice:
+          type: boolean
+          description: Whether the device is exclusively available to your organization.
+        state:
+          type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+          description: Current state of the device.
+        inUseBy:
+          type:
+          - string
+          - 'null'
+          description: Username currently using the device, if in use.
+    PaginationMeta:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
     SessionCreation:
       type: object
       description: Request body for creating a new real device session.
@@ -232,6 +274,15 @@ components:
           - string
           - 'null'
           description: Sauce Connect tunnel ID for private network access.
+    AppiumSession:
+      type: object
+      description: Appium-specific session metadata.
+      properties:
+        sessionId:
+          type: string
+        serverUrl:
+          type: string
+          format: uri
     DeviceDescriptor:
       type: object
       description: Hardware characteristics that identify a device model.
@@ -269,17 +320,6 @@ components:
           enum:
           - PHONE
           - TABLET
-    ErrorBody:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: string
     Session:
       type: object
       description: A real device session on Sauce Labs.
@@ -317,47 +357,13 @@ components:
           description: HATEOAS links for session actions.
           additionalProperties:
             type: string
-    AppiumSession:
-      type: object
-      description: Appium-specific session metadata.
-      properties:
-        sessionId:
-          type: string
-        serverUrl:
-          type: string
-          format: uri
-    PaginationMeta:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
-    Device:
-      type: object
-      description: A real physical device available in the Sauce Labs cloud.
-      properties:
-        descriptor:
-          $ref: '#/components/schemas/DeviceDescriptor'
-        isPrivateDevice:
-          type: boolean
-          description: Whether the device is exclusively available to your organization.
-        state:
-          type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-          description: Current state of the device.
-        inUseBy:
-          type:
-          - string
-          - 'null'
-          description: Username currently using the device, if in use.
   responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
     BadRequest:
       description: Invalid request parameters.
       content:
@@ -366,12 +372,6 @@ components:
             $ref: '#/components/schemas/ErrorBody'
     Unauthorized:
       description: Authentication credentials missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorBody'
-    NotFound:
-      description: Resource not found.
       content:
         application/json:
           schema:
