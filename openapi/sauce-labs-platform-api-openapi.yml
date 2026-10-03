@@ -64,19 +64,6 @@ paths:
                   $ref: '#/components/schemas/Platform'
 components:
   schemas:
-    SauceStatus:
-      type: object
-      description: Platform operational status.
-      properties:
-        wait_time:
-          type: number
-          description: Current average wait time in seconds.
-        service_operational:
-          type: boolean
-          description: Whether the service is currently operational.
-        status_message:
-          type: string
-          description: Human-readable status message.
     Platform:
       type: object
       description: A supported platform/browser/OS combination.
@@ -107,6 +94,19 @@ components:
           - string
           - 'null'
           description: Device name for mobile platforms.
+    SauceStatus:
+      type: object
+      description: Platform operational status.
+      properties:
+        wait_time:
+          type: number
+          description: Current average wait time in seconds.
+        service_operational:
+          type: boolean
+          description: Whether the service is currently operational.
+        status_message:
+          type: string
+          description: Human-readable status message.
   securitySchemes:
     basicAuth:
       type: http

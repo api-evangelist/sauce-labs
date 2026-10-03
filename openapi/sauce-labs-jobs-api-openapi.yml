@@ -211,6 +211,84 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+        message:
+          type: string
+          description: Summary error message.
+    JobUpdate:
+      type: object
+      description: Fields that can be updated on an existing job.
+      properties:
+        name:
+          type: string
+          description: New display name for the job.
+        passed:
+          type: boolean
+          description: Set pass/fail status for the job.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Replace the list of tags.
+        build:
+          type: string
+          description: Set or update the build name.
+        public:
+          type: string
+          enum:
+          - public
+          - private
+          - team
+          - share
+          description: Update the visibility of the job.
+        custom-data:
+          type: object
+          additionalProperties: true
+          description: Arbitrary key-value metadata.
+    JobSummary:
+      type: object
+      description: Abbreviated job information for list responses.
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - new
+          - queued
+          - in progress
+          - passed
+          - failed
+          - error
+          - complete
+        passed:
+          type:
+          - boolean
+          - 'null'
+        name:
+          type: string
+        build:
+          type:
+          - string
+          - 'null'
+        creation_time:
+          type: integer
+        start_time:
+          type:
+          - integer
+          - 'null'
+        end_time:
+          type:
+          - integer
+          - 'null'
     Job:
       type: object
       description: Full details of a Sauce Labs test job.
@@ -321,84 +399,6 @@ components:
           - string
           - 'null'
           description: Selenium version used.
-    JobUpdate:
-      type: object
-      description: Fields that can be updated on an existing job.
-      properties:
-        name:
-          type: string
-          description: New display name for the job.
-        passed:
-          type: boolean
-          description: Set pass/fail status for the job.
-        tags:
-          type: array
-          items:
-            type: string
-          description: Replace the list of tags.
-        build:
-          type: string
-          description: Set or update the build name.
-        public:
-          type: string
-          enum:
-          - public
-          - private
-          - team
-          - share
-          description: Update the visibility of the job.
-        custom-data:
-          type: object
-          additionalProperties: true
-          description: Arbitrary key-value metadata.
-    Error:
-      type: object
-      description: Error response envelope.
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          description: List of error messages.
-        message:
-          type: string
-          description: Summary error message.
-    JobSummary:
-      type: object
-      description: Abbreviated job information for list responses.
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - new
-          - queued
-          - in progress
-          - passed
-          - failed
-          - error
-          - complete
-        passed:
-          type:
-          - boolean
-          - 'null'
-        name:
-          type: string
-        build:
-          type:
-          - string
-          - 'null'
-        creation_time:
-          type: integer
-        start_time:
-          type:
-          - integer
-          - 'null'
-        end_time:
-          type:
-          - integer
-          - 'null'
   securitySchemes:
     basicAuth:
       type: http

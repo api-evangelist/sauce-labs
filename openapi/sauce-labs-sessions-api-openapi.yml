@@ -211,69 +211,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Device:
-      type: object
-      description: A real physical device available in the Sauce Labs cloud.
-      properties:
-        descriptor:
-          $ref: '#/components/schemas/DeviceDescriptor'
-        isPrivateDevice:
-          type: boolean
-          description: Whether the device is exclusively available to your organization.
-        state:
-          type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-          description: Current state of the device.
-        inUseBy:
-          type:
-          - string
-          - 'null'
-          description: Username currently using the device, if in use.
-    PaginationMeta:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
-    ErrorBody:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: string
-    SessionCreation:
-      type: object
-      description: Request body for creating a new real device session.
-      required:
-      - deviceDescriptorName
-      properties:
-        deviceDescriptorName:
-          type: string
-          description: Device model name to allocate.
-        osVersion:
-          type: string
-          description: Minimum OS version required.
-        privateDevicesOnly:
-          type: boolean
-          default: false
-          description: Only allocate private devices.
-        tunnelId:
-          type:
-          - string
-          - 'null'
-          description: Sauce Connect tunnel ID for private network access.
     AppiumSession:
       type: object
       description: Appium-specific session metadata.
@@ -283,43 +220,15 @@ components:
         serverUrl:
           type: string
           format: uri
-    DeviceDescriptor:
+    PaginationMeta:
       type: object
-      description: Hardware characteristics that identify a device model.
       properties:
-        name:
-          type: string
-          description: Device model name (e.g., "iPhone 14").
-        os:
-          type: string
-          enum:
-          - ANDROID
-          - IOS
-          description: Operating system.
-        osVersion:
-          type: string
-          description: OS version string.
-        cpuType:
-          type: string
-          description: CPU architecture.
-        cpuCores:
+        offset:
           type: integer
-          description: Number of CPU cores.
-        ramSize:
+        limit:
           type: integer
-          description: RAM size in MB.
-        screenSize:
-          type: string
-          description: Screen dimensions (e.g., "6.1 inches").
-        resolutionWidth:
+        totalRecords:
           type: integer
-        resolutionHeight:
-          type: integer
-        formFactor:
-          type: string
-          enum:
-          - PHONE
-          - TABLET
     Session:
       type: object
       description: A real device session on Sauce Labs.
@@ -357,6 +266,97 @@ components:
           description: HATEOAS links for session actions.
           additionalProperties:
             type: string
+    SessionCreation:
+      type: object
+      description: Request body for creating a new real device session.
+      required:
+      - deviceDescriptorName
+      properties:
+        deviceDescriptorName:
+          type: string
+          description: Device model name to allocate.
+        osVersion:
+          type: string
+          description: Minimum OS version required.
+        privateDevicesOnly:
+          type: boolean
+          default: false
+          description: Only allocate private devices.
+        tunnelId:
+          type:
+          - string
+          - 'null'
+          description: Sauce Connect tunnel ID for private network access.
+    DeviceDescriptor:
+      type: object
+      description: Hardware characteristics that identify a device model.
+      properties:
+        name:
+          type: string
+          description: Device model name (e.g., "iPhone 14").
+        os:
+          type: string
+          enum:
+          - ANDROID
+          - IOS
+          description: Operating system.
+        osVersion:
+          type: string
+          description: OS version string.
+        cpuType:
+          type: string
+          description: CPU architecture.
+        cpuCores:
+          type: integer
+          description: Number of CPU cores.
+        ramSize:
+          type: integer
+          description: RAM size in MB.
+        screenSize:
+          type: string
+          description: Screen dimensions (e.g., "6.1 inches").
+        resolutionWidth:
+          type: integer
+        resolutionHeight:
+          type: integer
+        formFactor:
+          type: string
+          enum:
+          - PHONE
+          - TABLET
+    Device:
+      type: object
+      description: A real physical device available in the Sauce Labs cloud.
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/DeviceDescriptor'
+        isPrivateDevice:
+          type: boolean
+          description: Whether the device is exclusively available to your organization.
+        state:
+          type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+          description: Current state of the device.
+        inUseBy:
+          type:
+          - string
+          - 'null'
+          description: Username currently using the device, if in use.
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
   responses:
     NotFound:
       description: Resource not found.
@@ -364,14 +364,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    BadRequest:
-      description: Invalid request parameters.
+    Unauthorized:
+      description: Authentication credentials missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    Unauthorized:
-      description: Authentication credentials missing or invalid.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:

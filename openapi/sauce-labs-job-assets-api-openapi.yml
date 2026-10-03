@@ -57,19 +57,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  schemas:
-    Error:
-      type: object
-      description: Error response envelope.
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          description: List of error messages.
-        message:
-          type: string
-          description: Summary error message.
   responses:
     NotFound:
       description: The requested resource was not found.
@@ -83,6 +70,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+        message:
+          type: string
+          description: Summary error message.
   securitySchemes:
     basicAuth:
       type: http

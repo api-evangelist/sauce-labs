@@ -43,19 +43,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      description: Error response envelope.
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          description: List of error messages.
-        message:
-          type: string
-          description: Summary error message.
     Concurrency:
       type: object
       description: Concurrency usage and limits for a user.
@@ -86,13 +81,18 @@ components:
                       type: integer
                     manual:
                       type: integer
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of error messages.
+        message:
+          type: string
+          description: Summary error message.
   securitySchemes:
     basicAuth:
       type: http

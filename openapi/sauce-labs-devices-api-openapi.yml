@@ -77,28 +77,15 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Device:
+    PaginationMeta:
       type: object
-      description: A real physical device available in the Sauce Labs cloud.
       properties:
-        descriptor:
-          $ref: '#/components/schemas/DeviceDescriptor'
-        isPrivateDevice:
-          type: boolean
-          description: Whether the device is exclusively available to your organization.
-        state:
-          type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-          description: Current state of the device.
-        inUseBy:
-          type:
-          - string
-          - 'null'
-          description: Username currently using the device, if in use.
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
     DeviceStatus:
       type: object
       description: Current availability state for a device.
@@ -117,17 +104,6 @@ components:
           - string
           - 'null'
           description: Current session ID if in use.
-    ErrorBody:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: string
     DeviceDescriptor:
       type: object
       description: Hardware characteristics that identify a device model.
@@ -165,15 +141,39 @@ components:
           enum:
           - PHONE
           - TABLET
-    PaginationMeta:
+    ErrorBody:
       type: object
       properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
+    Device:
+      type: object
+      description: A real physical device available in the Sauce Labs cloud.
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/DeviceDescriptor'
+        isPrivateDevice:
+          type: boolean
+          description: Whether the device is exclusively available to your organization.
+        state:
+          type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+          description: Current state of the device.
+        inUseBy:
+          type:
+          - string
+          - 'null'
+          description: Username currently using the device, if in use.
   responses:
     Unauthorized:
       description: Authentication credentials missing or invalid.
