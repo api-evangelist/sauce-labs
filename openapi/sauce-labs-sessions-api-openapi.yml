@@ -211,24 +211,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    AppiumSession:
-      type: object
-      description: Appium-specific session metadata.
-      properties:
-        sessionId:
-          type: string
-        serverUrl:
-          type: string
-          format: uri
-    PaginationMeta:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
     Session:
       type: object
       description: A real device session on Sauce Labs.
@@ -266,27 +248,24 @@ components:
           description: HATEOAS links for session actions.
           additionalProperties:
             type: string
-    SessionCreation:
+    PaginationMeta:
       type: object
-      description: Request body for creating a new real device session.
-      required:
-      - deviceDescriptorName
       properties:
-        deviceDescriptorName:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
+    AppiumSession:
+      type: object
+      description: Appium-specific session metadata.
+      properties:
+        sessionId:
           type: string
-          description: Device model name to allocate.
-        osVersion:
+        serverUrl:
           type: string
-          description: Minimum OS version required.
-        privateDevicesOnly:
-          type: boolean
-          default: false
-          description: Only allocate private devices.
-        tunnelId:
-          type:
-          - string
-          - 'null'
-          description: Sauce Connect tunnel ID for private network access.
+          format: uri
     DeviceDescriptor:
       type: object
       description: Hardware characteristics that identify a device model.
@@ -346,6 +325,27 @@ components:
           - string
           - 'null'
           description: Username currently using the device, if in use.
+    SessionCreation:
+      type: object
+      description: Request body for creating a new real device session.
+      required:
+      - deviceDescriptorName
+      properties:
+        deviceDescriptorName:
+          type: string
+          description: Device model name to allocate.
+        osVersion:
+          type: string
+          description: Minimum OS version required.
+        privateDevicesOnly:
+          type: boolean
+          default: false
+          description: Only allocate private devices.
+        tunnelId:
+          type:
+          - string
+          - 'null'
+          description: Sauce Connect tunnel ID for private network access.
     ErrorBody:
       type: object
       properties:
@@ -364,14 +364,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    Unauthorized:
-      description: Authentication credentials missing or invalid.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    BadRequest:
-      description: Invalid request parameters.
+    Unauthorized:
+      description: Authentication credentials missing or invalid.
       content:
         application/json:
           schema:

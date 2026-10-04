@@ -86,24 +86,6 @@ components:
           type: integer
         totalRecords:
           type: integer
-    DeviceStatus:
-      type: object
-      description: Current availability state for a device.
-      properties:
-        deviceId:
-          type: string
-        status:
-          type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-        sessionId:
-          type:
-          - string
-          - 'null'
-          description: Current session ID if in use.
     DeviceDescriptor:
       type: object
       description: Hardware characteristics that identify a device model.
@@ -141,17 +123,6 @@ components:
           enum:
           - PHONE
           - TABLET
-    ErrorBody:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: string
     Device:
       type: object
       description: A real physical device available in the Sauce Labs cloud.
@@ -174,6 +145,35 @@ components:
           - string
           - 'null'
           description: Username currently using the device, if in use.
+    DeviceStatus:
+      type: object
+      description: Current availability state for a device.
+      properties:
+        deviceId:
+          type: string
+        status:
+          type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+        sessionId:
+          type:
+          - string
+          - 'null'
+          description: Current session ID if in use.
+    ErrorBody:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
   responses:
     Unauthorized:
       description: Authentication credentials missing or invalid.
