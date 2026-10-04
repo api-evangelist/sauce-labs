@@ -204,6 +204,9 @@ apis:
   - type: Documentation
     url: https://docs.saucelabs.com/dev/api/
 common:
+  - type: CapabilityMap
+    url: capabilities/sauce-labs-capability-edges.yml
+    name: Sauce Labs Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/sauce-labs/overview
   - type: AgenticAccess
