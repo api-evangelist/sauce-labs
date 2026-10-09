@@ -247,6 +247,8 @@ common:
     url: rate-limits/sauce-labs-rate-limits.yml
   - type: FinOps
     url: finops/sauce-labs-finops.yml
+  - type: SpectralRules
+    url: https://github.com/saucelabs/sauce-docs/blob/1c8b14d77dd01d0a86668448e6c7e67ba111e0d0/.spectral.yaml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,33 @@
+# harvested from https://github.com/saucelabs/sauce-docs/blob/1c8b14d77dd01d0a86668448e6c7e67ba111e0d0/.spectral.yaml on 2026-10-09 — a Spectral ruleset published in the provider's own GitHub repository (saucelabs/sauce-docs); found by GitHub code search, fetched verbatim
+x-method: harvested
+x-stamped: 2026-10-09
+x-source-url: https://github.com/saucelabs/sauce-docs/blob/1c8b14d77dd01d0a86668448e6c7e67ba111e0d0/.spectral.yaml
+extends:
+  - spectral:oas
+
+rules:
+  # --- Standard OpenAPI rules (severity overrides) ---
+
+  # Every operation must have an operationId (standard best practice)
+  operation-operationId: error
+
+  # Every operation must have a description (not just summary)
+  operation-description: warn
+
+  # Operation IDs must be unique
+  operation-operationId-unique: error
+
+  # Every operation must define at least one response
+  oas3-valid-schema-example: warn
+
+  # Path parameters must be defined
+  path-params: error
+
+  # No duplicate parameters
+  no-eval-in-markdown: warn
+  no-script-tags-in-markdown: warn
+
+  # Schema best practices
+  oas3-schema: error
+  oas3-unused-component: warn
+  typed-enum: warn
