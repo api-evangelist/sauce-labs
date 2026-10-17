@@ -77,6 +77,28 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Device:
+      type: object
+      description: A real physical device available in the Sauce Labs cloud.
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/DeviceDescriptor'
+        isPrivateDevice:
+          type: boolean
+          description: Whether the device is exclusively available to your organization.
+        state:
+          type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+          description: Current state of the device.
+        inUseBy:
+          type:
+          - string
+          - 'null'
+          description: Username currently using the device, if in use.
     PaginationMeta:
       type: object
       properties:
@@ -123,28 +145,17 @@ components:
           enum:
           - PHONE
           - TABLET
-    Device:
+    ErrorBody:
       type: object
-      description: A real physical device available in the Sauce Labs cloud.
       properties:
-        descriptor:
-          $ref: '#/components/schemas/DeviceDescriptor'
-        isPrivateDevice:
-          type: boolean
-          description: Whether the device is exclusively available to your organization.
-        state:
+        code:
           type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-          description: Current state of the device.
-        inUseBy:
-          type:
-          - string
-          - 'null'
-          description: Username currently using the device, if in use.
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
     DeviceStatus:
       type: object
       description: Current availability state for a device.
@@ -163,17 +174,6 @@ components:
           - string
           - 'null'
           description: Current session ID if in use.
-    ErrorBody:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: string
   responses:
     Unauthorized:
       description: Authentication credentials missing or invalid.

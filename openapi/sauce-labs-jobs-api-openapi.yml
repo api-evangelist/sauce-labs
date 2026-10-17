@@ -197,50 +197,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    JobUpdate:
-      type: object
-      description: Fields that can be updated on an existing job.
-      properties:
-        name:
-          type: string
-          description: New display name for the job.
-        passed:
-          type: boolean
-          description: Set pass/fail status for the job.
-        tags:
-          type: array
-          items:
-            type: string
-          description: Replace the list of tags.
-        build:
-          type: string
-          description: Set or update the build name.
-        public:
-          type: string
-          enum:
-          - public
-          - private
-          - team
-          - share
-          description: Update the visibility of the job.
-        custom-data:
-          type: object
-          additionalProperties: true
-          description: Arbitrary key-value metadata.
     Job:
       type: object
       description: Full details of a Sauce Labs test job.
@@ -399,6 +356,49 @@ components:
           type:
           - integer
           - 'null'
+    JobUpdate:
+      type: object
+      description: Fields that can be updated on an existing job.
+      properties:
+        name:
+          type: string
+          description: New display name for the job.
+        passed:
+          type: boolean
+          description: Set pass/fail status for the job.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Replace the list of tags.
+        build:
+          type: string
+          description: Set or update the build name.
+        public:
+          type: string
+          enum:
+          - public
+          - private
+          - team
+          - share
+          description: Update the visibility of the job.
+        custom-data:
+          type: object
+          additionalProperties: true
+          description: Arbitrary key-value metadata.
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

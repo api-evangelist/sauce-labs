@@ -211,52 +211,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Session:
-      type: object
-      description: A real device session on Sauce Labs.
-      properties:
-        id:
-          type: string
-          description: Unique session ID.
-        state:
-          type: string
-          enum:
-          - CREATED
-          - BOOTING
-          - RUNNING
-          - CLOSING
-          - CLOSED
-          - TIMED_OUT
-          - ERROR
-          description: Current lifecycle state of the session.
-        expiresAt:
-          type: string
-          format: date-time
-          description: ISO 8601 timestamp when the session expires.
-        retainUntil:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601 timestamp until the session is retained.
-        device:
-          $ref: '#/components/schemas/Device'
-        appium:
-          $ref: '#/components/schemas/AppiumSession'
-        links:
-          type: object
-          description: HATEOAS links for session actions.
-          additionalProperties:
-            type: string
-    PaginationMeta:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalRecords:
-          type: integer
     AppiumSession:
       type: object
       description: Appium-specific session metadata.
@@ -266,6 +220,28 @@ components:
         serverUrl:
           type: string
           format: uri
+    Device:
+      type: object
+      description: A real physical device available in the Sauce Labs cloud.
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/DeviceDescriptor'
+        isPrivateDevice:
+          type: boolean
+          description: Whether the device is exclusively available to your organization.
+        state:
+          type: string
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - OFFLINE
+          - MAINTENANCE
+          description: Current state of the device.
+        inUseBy:
+          type:
+          - string
+          - 'null'
+          description: Username currently using the device, if in use.
     DeviceDescriptor:
       type: object
       description: Hardware characteristics that identify a device model.
@@ -303,28 +279,15 @@ components:
           enum:
           - PHONE
           - TABLET
-    Device:
+    PaginationMeta:
       type: object
-      description: A real physical device available in the Sauce Labs cloud.
       properties:
-        descriptor:
-          $ref: '#/components/schemas/DeviceDescriptor'
-        isPrivateDevice:
-          type: boolean
-          description: Whether the device is exclusively available to your organization.
-        state:
-          type: string
-          enum:
-          - AVAILABLE
-          - IN_USE
-          - OFFLINE
-          - MAINTENANCE
-          description: Current state of the device.
-        inUseBy:
-          type:
-          - string
-          - 'null'
-          description: Username currently using the device, if in use.
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalRecords:
+          type: integer
     SessionCreation:
       type: object
       description: Request body for creating a new real device session.
@@ -346,6 +309,43 @@ components:
           - string
           - 'null'
           description: Sauce Connect tunnel ID for private network access.
+    Session:
+      type: object
+      description: A real device session on Sauce Labs.
+      properties:
+        id:
+          type: string
+          description: Unique session ID.
+        state:
+          type: string
+          enum:
+          - CREATED
+          - BOOTING
+          - RUNNING
+          - CLOSING
+          - CLOSED
+          - TIMED_OUT
+          - ERROR
+          description: Current lifecycle state of the session.
+        expiresAt:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp when the session expires.
+        retainUntil:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601 timestamp until the session is retained.
+        device:
+          $ref: '#/components/schemas/Device'
+        appium:
+          $ref: '#/components/schemas/AppiumSession'
+        links:
+          type: object
+          description: HATEOAS links for session actions.
+          additionalProperties:
+            type: string
     ErrorBody:
       type: object
       properties:
@@ -364,14 +364,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    BadRequest:
-      description: Invalid request parameters.
+    Unauthorized:
+      description: Authentication credentials missing or invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorBody'
-    Unauthorized:
-      description: Authentication credentials missing or invalid.
+    BadRequest:
+      description: Invalid request parameters.
       content:
         application/json:
           schema:
