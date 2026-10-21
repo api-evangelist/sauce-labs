@@ -27,19 +27,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: sauce-labs-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/A02L03DKFKM-backtrace
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: sauce-labs-cloud-security-alliance-star-registry
   label: Cloud Security Alliance STAR Registry
   partner_name: Cloud Security Alliance STAR Registry
@@ -68,5 +55,44 @@
       = every instance marked (Deprecated) by the registry; service counts never recorded
     detected_by: sweep-compliance-assurance.py
     detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: sauce-labs-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A02L03DKFKM-backtrace
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: sauce-labs-eclipse-foundation-open-vsx
+  label: Eclipse Foundation (open-vsx)
+  partner: eclipse
+  partner_name: Eclipse Foundation (open-vsx)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: open-vsx
+  channel: partner-built
+  evidence: https://open-vsx.org/namespace/saucelabs
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: sauce-labs-vs-code-marketplace-vs-code-marketplace
+  label: VS Code Marketplace (vs-code-marketplace)
+  partner: vs-code-marketplace
+  partner_name: VS Code Marketplace (vs-code-marketplace)
+  category: IDE / developer extension marketplace listing
+  type: marketplace
+  marketplace: vs-code-marketplace
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/saucelabs
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
